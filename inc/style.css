@@ -1,0 +1,130 @@
+body {
+	background:url(../img/bg.png) #8eafce;
+	color:#333;
+	font:12px/1.5 "Trebuchet MS", sans-serif;
+	margin:0;
+}
+
+#wrapper {
+	background:#fff;
+	border-radius:10px;
+	box-shadow:1px 1px 8px #333;
+	height:480px;
+	left:50%;
+	margin:-240px 0 0 -160px;
+	position:absolute;
+	top:50%;
+	width:320px;
+}
+
+#content {
+	padding:0 15px;
+}
+
+header {
+	background:-moz-linear-gradient(top, #b9b9b9 0%, #dcdcdc 2%, #c5c5c5 4%, #bebebe 23%, #9d9d9d 81%, #969696 100%);
+	background:-ms-linear-gradient(top, #b9b9b9 0%,#dcdcdc 2%,#c5c5c5 4%,#bebebe 23%,#9d9d9d 81%,#969696 100%);
+	background:-o-linear-gradient(top, #b9b9b9 0%,#dcdcdc 2%,#c5c5c5 4%,#bebebe 23%,#9d9d9d 81%,#969696 100%);
+	background:-webkit-linear-gradient(top, #b9b9b9 0%,#dcdcdc 2%,#c5c5c5 4%,#bebebe 23%,#9d9d9d 81%,#969696 100%);
+	background:linear-gradient(top, #b9b9b9 0%,#dcdcdc 2%,#c5c5c5 4%,#bebebe 23%,#9d9d9d 81%,#969696 100%);
+	border-radius:10px 10px 0 0;
+}
+
+footer {
+	bottom:10px;
+	color:#999;
+	font-size:90%;
+	margin:0;
+	position:absolute;
+	right:10px;
+}
+
+footer a:hover {
+	color:#999;
+}
+
+#settings {
+	-moz-transition:height .6s ease;
+	-ms-transition:height .6s ease;
+	-o-transition:height .6s ease;
+	-webkit-transition:height .6s ease;
+	height:0;
+	overflow:hidden;
+	transition:height .6s ease;
+}
+
+#settings.show {
+	height:90px;
+}
+
+.box {
+	display:inline-block;
+	text-align:center;
+	margin-right:40px;
+	width:67px;
+}
+
+.box:last-child {
+	margin:0;
+}
+
+h1 {    
+	color:#14222f;
+	font-size:24px;
+	font-weight:700;
+	height:54px;
+	line-height:54px;
+	margin:0 0 10px;
+	text-indent:15px;
+	text-shadow:1px 1px 1px #fff;
+}
+
+h2 {
+	font-size:18px;
+	font-weight:700;
+	margin:10px 0;
+}
+
+p {
+	margin:10px 0;
+}
+
+img {
+	border:0;
+}
+
+span {
+	font-size:22px;
+}
+
+input {
+	font-size:26px;
+	height:50px;
+	line-height:50px;
+	text-indent:5px;
+	width:98%;
+}
+
+input[type=number] {
+	height:40px;
+	line-height:40px;
+	margin:2px 0 0;
+	padding:0 0 0 5px;
+	text-indent:0;
+	width:60px;
+}
+
+select {
+	font-size:26px;
+	margin:5px 0 0;
+	width:135px;
+}
+
+a {
+	color:#8eafce;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#333;
+}

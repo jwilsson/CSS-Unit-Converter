@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    
+<head>
+    <meta charset="utf-8">
+    <title>CSS Unit Converter</title>
+    <link rel="stylesheet" href="inc/style.12.css">
+    <meta name="description" content="CSS Unit Converter is a little tool which helps you convert values between almost every CSS &lt;length&gt; unit.">
+</head>
+
+<body>
+
+    <div id="wrapper">
+	
+		<header>
+		    
+		    <h1>CSS Unit Converter</h1>
+		    
+		</header>
+		
+		<section id="content">
+		
+		    <input type="text" name="from" id="from">
+			
+		    <select name="from-unit" id="from-unit">
+				<option value="cm">cm</option>
+				<option value="em">em</option>
+				<option value="in">in</option>
+				<option value="mm">mm</option>
+				<option value="pc">pc</option>
+				<option value="pt">pt</option>
+				<option value="pr">%</option>
+				<option value="px">px</option>
+				<option value="rem">rem</option>
+		    </select>
+		
+		    <span>&raquo;</span>
+		    
+		    <select name="to-unit" id="to-unit">
+				<option value="cm">cm</option>
+				<option value="em">em</option>
+				<option value="in">in</option>
+				<option value="mm">mm</option>
+				<option value="pc">pc</option>
+				<option value="pt">pt</option>
+				<option value="%">%</option>
+				<option value="px">px</option>
+				<option value="rem">rem</option>
+		    </select>
+		    
+		    <p>
+				<a href="#" id="toggle">Settings</a>
+		    </p>
+		    
+		    <section id="settings">
+				
+				<div class="box">
+					
+				    <label for="base-size">Base size (px):</label>
+				    <input type="number" name="base-size" id="base-size" min="1" value="16">
+					
+				</div>
+				    
+				<div class="box">
+					
+				    <label for="decimals">Decimal places:</label>
+				    <input type="number" name="decimals" id="decimals" min="0" value="2">
+					
+				</div>
+				    
+				<div class="box">
+					
+				    <label for="decimals">Dots per inch (DPI):</label>
+				    <input type="number" name="dpi" id="dpi" min="1" value="72">
+					    
+				</div>
+		
+		    </section>
+		    
+		    <h2>Result:</h2>
+		    
+		    <span id="result"></span>
+		
+		</section>
+	
+		<footer>
+
+			A thing by <a href="https://twitter.com/#!/jwilsson">Jonathan Wilsson</a>.
+
+		</footer>
+	
+    </div>
+    
+    <script src="inc/unit-converter.6.js"></script>
+   	<script>var _gaq=[['_setAccount','UA-78021-10'],['_trackPageview']];(function(d,t){
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.async=1;g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)
+    }(document,'script'))</script>
+    
+</body>
+
+</html>
