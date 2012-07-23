@@ -93,7 +93,7 @@ function convert (value, from, to, base, dpi, decimals) {
 }
 
 function run() {
-	document.getElementById("result").innerHTML = UnitConverter(
+	document.getElementById("result").innerHTML = convert(
 		document.getElementById("from").value,
 		document.getElementById("from-unit").value,
 		document.getElementById("to-unit").value,
