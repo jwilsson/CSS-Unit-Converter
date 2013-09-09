@@ -5,7 +5,7 @@ body {
 	margin: 0;
 }
 
-#wrapper {
+.wrapper {
 	background: #fff;
 	border-radius: 10px;
 	box-shadow: 1px 1px 8px #333;
@@ -17,7 +17,7 @@ body {
 	width: 320px;
 }
 
-#content {
+.content {
 	padding: 0 15px;
 }
 
@@ -35,18 +35,18 @@ footer {
 	right: 10px;
 }
 
-footer a: hover {
+footer a:hover {
 	color: #999;
 }
 
-#settings {
+.settings {
 	-webkit-transition: height .6s ease;
 	height: 0;
 	overflow: hidden;
 	transition: height .6s ease;
 }
 
-#settings.show {
+.settings.show {
 	height: 90px;
 }
 

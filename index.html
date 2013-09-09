@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
-	
+
 <head>
 	<meta charset="utf-8">
 	<title>CSS Unit Converter</title>
@@ -10,19 +9,19 @@
 
 <body>
 
-	<div id="wrapper">
-	
+	<div class="wrapper">
+
 		<header>
-			
+
 			<h1>CSS Unit Converter</h1>
-			
+
 		</header>
-		
-		<section id="content">
-		
-			<input type="text" id="from">
-			
-			<select id="from-unit">
+
+		<section class="content">
+
+			<input type="text" class="from">
+
+			<select class="from-unit">
 				<option value="cm">cm</option>
 				<option value="em">em</option>
 				<option value="in">in</option>
@@ -33,10 +32,10 @@
 				<option value="px">px</option>
 				<option value="rem">rem</option>
 			</select>
-		
+
 			<span>&raquo;</span>
-			
-			<select id="to-unit">
+
+			<select class="to-unit">
 				<option value="cm">cm</option>
 				<option value="em">em</option>
 				<option value="in">in</option>
@@ -47,56 +46,54 @@
 				<option value="px">px</option>
 				<option value="rem">rem</option>
 			</select>
-			
+
 			<p>
-				<a href="#" id="toggle">Settings</a>
+				<a href="#" class="toggle">Settings</a>
 			</p>
-			
-			<section id="settings">
-				
+
+			<section class="settings">
+
 				<div class="box">
-					
+
 					<label for="base-size">Base size (px):</label>
-					<input type="number" id="base-size" min="1" value="16">
-					
+					<input type="number" class="base-size" min="1" value="16">
+
 				</div>
-					
+
 				<div class="box">
-					
+
 					<label for="decimals">Decimal places:</label>
-					<input type="number" id="decimals" min="0" value="2">
-					
+					<input type="number" class="decimals" min="0" value="2">
+
 				</div>
-					
+
 				<div class="box">
-					
+
 					<label for="decimals">Dots per inch (DPI):</label>
-					<input type="number" id="dpi" min="1" value="72">
-						
+					<input type="number" class="dpi" min="1" value="72">
+
 				</div>
-		
+
 			</section>
-			
+
 			<h2>Result:</h2>
-			
-			<span id="result"></span>
-		
+
+			<span class="result"></span>
+
 		</section>
-	
+
 		<footer>
 
-			Another thing by <a href="https://twitter.com/#!/jwilsson">Jonathan Wilsson</a>.
+			Another thing by <a href="https://twitter.com/jwilsson">Jonathan Wilsson</a>.
 
 		</footer>
-	
+
 	</div>
-	
+
 	<script src="inc/unit-converter.js"></script>
 	<script>var _gaq=[['_setAccount','UA-78021-10'],['_trackPageview']];(function(d,t){
 	var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 	g.async=1;g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)
 	}(document,'script'))</script>
-	
-</body>
 
-</html>
+</body>
