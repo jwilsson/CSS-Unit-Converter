@@ -1,4 +1,4 @@
-/*! CSS Unit converter 1.5.1 Copyright 2011-2013 Jonathan Wilsson */
+/*! CSS Unit converter 1.5.2 Copyright 2011-2013 Jonathan Wilsson */
 ;(function () {
 	var roundNumber = function (number, decimals) {
 		return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
@@ -116,11 +116,9 @@
 
 		// Toogle display of setting forms
 		document.querySelector('.toggle').addEventListener('click', function (e) {
-			var settings = document.querySelector('.settings');
-
 			e.preventDefault();
 
-			settings.className = (settings.className === '' ? 'show' : '');
+			document.querySelector('.settings').classList.toggle('show');
 		});
 	}, false);
 }(window));
