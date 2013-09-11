@@ -2,6 +2,7 @@
 	var roundNumber = function (number, decimals) {
 		return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
 	},
+
 	convert = function (value, from, to, base, dpi, decimals) {
 		var units = from + '-' + to,
 			result,
@@ -92,6 +93,7 @@
 
 		return (isNaN(result) ? 'N/A' : roundNumber(result, decimals) + to);
 	},
+
 	run = function () {
 		document.querySelector('.result').innerHTML = convert(
 			document.querySelector('.from').value,
@@ -104,14 +106,12 @@
 	};
 
 	window.addEventListener('DOMContentLoaded', function () {
-		// Listen for change on all <input>s and <select>s
-		var elements = document.querySelectorAll('input, select'),
-			i;
+		var elements = document.querySelectorAll('input, select');
 
-		for (i = 0; i < elements.length; i++) {
-			elements[i].addEventListener('keyup', run, false);
-			elements[i].addEventListener('change', run, false);
-		}
+		[].slice.call(elements).forEach(function (element) {
+			element.addEventListener('change', run, false);
+			element.addEventListener('keyup', run, false);
+		});
 
 		// Toogle display of setting forms
 		document.querySelector('.toggle').addEventListener('click', function (e) {
@@ -120,4 +120,4 @@
 			document.querySelector('.settings').classList.toggle('show');
 		});
 	}, false);
-}(window));
+}());
