@@ -1,4 +1,3 @@
-/*! CSS Unit converter 1.5.2 Copyright 2011-2013 Jonathan Wilsson */
 ;(function () {
 	var roundNumber = function (number, decimals) {
 		return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
