@@ -32,7 +32,7 @@ header {
 footer {
 	bottom: 10px;
 	color: #999;
-	font-size: 90%;
+	font-size: 0.9rem;
 	position: absolute;
 	right: 10px;
 }
@@ -65,23 +65,23 @@ footer a:hover {
 
 h1 {
 	color: #14222f;
-	font-size: 24px;
+	font-size: 2rem;
 	font-weight: 700;
 	height: 54px;
 	line-height: 54px;
-	margin: 0 0 10px;
+	margin: 0 0 0.4em;
 	text-indent: 15px;
 	text-shadow: 1px 1px 1px #fff;
 }
 
 h2 {
-	font-size: 18px;
+	font-size: 1.5rem;
 	font-weight: 700;
 	margin: 10px 0;
 }
 
 p {
-	margin: 10px 0;
+	margin: 055em 0;
 }
 
 img {
@@ -89,11 +89,11 @@ img {
 }
 
 span {
-	font-size: 22px;
+	font-size: 1.8rem;
 }
 
 input {
-	font-size: 26px;
+	font-size: 2.2rem;
 	height: 50px;
 	line-height: 50px;
 	padding-left: 5px;
@@ -108,7 +108,7 @@ input[type=number] {
 }
 
 select {
-	font-size: 26px;
+	font-size: 2.2rem;
 	margin-top: 5px;
 	width: 135px;
 }
