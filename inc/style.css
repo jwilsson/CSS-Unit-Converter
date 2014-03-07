@@ -99,7 +99,7 @@ input {
 	width: 98%;
 }
 
-input[type=number] {
+.settings input {
 	height: 40px;
 	margin-top: 2px;
 	width: 60px;
