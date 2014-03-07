@@ -6,12 +6,13 @@ body {
 }
 
 .wrapper {
-	background: #fff;
+	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 1px 1px 8px #333;
 	height: 480px;
 	left: 50%;
-	margin: -240px 0 0 -160px;
+	margin-left: -160px;
+	margin-top: -240px;
 	position: absolute;
 	top: 50%;
 	width: 320px;
@@ -24,7 +25,8 @@ body {
 header {
 	background: -webkit-linear-gradient(top, #b9b9b9 0%, #dcdcdc 2%, #c5c5c5 4%, #bebebe 23% ,#9d9d9d 81%, #969696 100%);
 	background: linear-gradient(to bottom, #b9b9b9 0%, #dcdcdc 2%, #c5c5c5 4%, #bebebe 23%, #9d9d9d 81%, #969696 100%);
-	border-radius: 10px 10px 0 0;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 footer {
@@ -52,7 +54,7 @@ footer a:hover {
 
 .box {
 	display: inline-block;
-	margin: 0 0 0 40px;
+	margin-left: 40px;
 	text-align: center;
 	width: 60px;
 }
@@ -94,20 +96,20 @@ input {
 	font-size: 26px;
 	height: 50px;
 	line-height: 50px;
-	padding: 0 0 0 5px;
+	padding-left: 5px;
 	width: 98%;
 }
 
 input[type=number] {
 	height: 40px;
 	line-height: 40px;
-	margin: 2px 0 0;
+	margin-top: 2px;
 	width: 60px;
 }
 
 select {
 	font-size: 26px;
-	margin: 5px 0 0;
+	margin-top: 5px;
 	width: 135px;
 }
 
