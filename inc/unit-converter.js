@@ -92,8 +92,8 @@
 		var elements = document.querySelectorAll('input, select');
 
 		[].slice.call(elements).forEach(function (element) {
-			element.addEventListener('change', run, false);
-			element.addEventListener('keyup', run, false);
+			element.addEventListener('change', run);
+			element.addEventListener('keyup', run);
 		});
 
 		// Toogle display of setting forms
@@ -102,5 +102,5 @@
 
 			document.querySelector('.settings').classList.toggle('show');
 		});
-	}, false);
+	});
 }());
