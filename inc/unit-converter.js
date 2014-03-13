@@ -72,7 +72,7 @@
 				'px-%': value / base * 100
 			};
 
-		result = formulas[units] || false;
+		result = formulas[units] || value;
 
 		return (isNaN(result) ? 'N/A' : roundNumber(result, decimals) + to);
 	},
