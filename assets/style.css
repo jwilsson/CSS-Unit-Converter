@@ -43,7 +43,7 @@ footer a:hover {
 .settings {
 	height: 0;
 	overflow: hidden;
-	transition: height .6s ease;
+	transition: height .6s ease-in-out;
 }
 
 .settings.show {
@@ -112,6 +112,7 @@ select {
 a {
 	color: #8eafce;
 	text-decoration: none;
+	transition: color 0.3s ease-in-out;
 }
 
 a:hover {
