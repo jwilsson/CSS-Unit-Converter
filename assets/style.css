@@ -1,7 +1,11 @@
-html {
+html, body {
+	align-items: center;
 	background: #8eafce url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAHlBMVEWVttWUtdSTtNOSs9KQsdCRstGPsM+Or86Wt9aNrs27DyJLAAAB2UlEQVR4XmWQO3eacBxAfyAPu0HQQDYkAmbDBEjcxD8xdfMBGDekoskG4oNuaqrHbokard+2p0uWfoB77zkXQmymbcaaE9/W+lGBW8Ab2X/YZPOkMSWFt2TXAu9gomuS9l89mX+i9AqgbjtEWFf5wQgh3xxXILkfWZEkO/z1N8GWoxgWm+yn7SjEzAurnJ7ogIaFwW3B3K0NK+L4QQhfNiq3TqXEAFTLnF/WS1Tl8Nxjb1SG6U+fjqXMNsRu0in9R4Ozhg98jdC8VSkQruIaFBUeZx/IjWOxs24+nMCjaT7gDaraIxl8HCARDNbP7LWanIxmZSZfrPxfMZxFXwu1JfGRY+yedAciPmm+q6gX9D0TfmMKvFCzseQrm3mHn7tZ1YJiY4Wx+Tg5nfKdSWCfAfGl56tef1dvdNyY1A2obee/aLHdssvtRvUVTWDJpv6BuyBU5Hp+sY7gVBifh+juaws08WtLvL+7dW8OPC6nXVjuI2XudEWhNCpyiADAA6pbUiICd0uxTJsinIbu3v1OcVQnyzRYi4BL9Ul+Wa5DOhKOF5LOAF/PLLBLHLHpimvXjx1grY/gTKsrddhBgxHI4Ohi5bh9zumYVrDdYwL/uBZf/gxOIZ1a795faYKId5/Qy18AAAAASUVORK5CYII=);
 	color: #333;
+	display: flex;
 	font: 12px/1.5 "Trebuchet MS", sans-serif;
+	height: 100%;
+	justify-content: center;
 	margin: 0;
 }
 
@@ -10,11 +14,7 @@ html {
 	border-radius: 10px;
 	box-shadow: 1px 1px 8px #333;
 	height: 480px;
-	left: 50%;
-	margin-left: -160px;
-	margin-top: -240px;
-	position: absolute;
-	top: 50%;
+	position: relative;
 	width: 320px;
 }
 
