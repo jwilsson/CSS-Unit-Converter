@@ -141,11 +141,11 @@
 			document.querySelector('.settings').classList.toggle('show');
 		});
 
-		// Save all values once a minute
+		// Save all values once every 30 seconds
 		setInterval(function () {
 			elements.forEach(function (element) {
 				localStorage.setItem(element.name, element.value);
 			});
-		}, 60000);
+		}, 30000);
 	});
 }());
