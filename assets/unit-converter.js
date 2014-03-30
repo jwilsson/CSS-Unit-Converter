@@ -81,12 +81,14 @@
 		return (isNaN(result) ? 'N/A' : roundNumber(result, decimals) + to);
 	},
 
-	setupUnits = function () {
+	setupForm = function () {
 		var selects = document.querySelectorAll('select'),
+			settings = document.querySelectorAll('.settings input'),
 			fragment = document.createDocumentFragment(),
 			options = [],
 			units = ['cm', 'em', 'in', 'mm', 'pc', 'pt', '%', 'px'];
 
+		// Add the units
 		units.forEach(function (unit) {
 			var option = document.createElement('option');
 
@@ -97,7 +99,17 @@
 		});
 
 		toArray(selects).forEach(function (select) {
+			var fromUnit = localStorage.getItem('from-unit'),
+				toUnit = localStorage.getItem('to-unit');
+
 			select.appendChild(fragment.cloneNode(true));
+		});
+
+		// Add settings
+		toArray(settings).forEach(function (setting) {
+			var name = setting.name;
+
+			setting.value = localStorage.getItem(name) || setting.value;
 		});
 	},
 
@@ -115,7 +127,7 @@
 	window.addEventListener('DOMContentLoaded', function () {
 		var elements = document.querySelectorAll('input, select');
 
-		setupUnits();
+		setupForm();
 
 		toArray(elements).forEach(function (element) {
 			element.addEventListener('change', run);
@@ -128,5 +140,12 @@
 
 			document.querySelector('.settings').classList.toggle('show');
 		});
+
+		// Save all values once a minute
+		setInterval(function () {
+			toArray(elements).forEach(function (element) {
+				localStorage.setItem(element.name, element.value);
+			});
+		}, 60000);
 	});
 }());
