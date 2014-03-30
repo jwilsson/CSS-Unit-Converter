@@ -3,6 +3,10 @@
 		return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
 	},
 
+	toArray = function (object) {
+		return [].slice.call(object);
+	},
+
 	convert = function (value, from, to, base, dpi, decimals) {
 		var units = from + '-' + to,
 			result,
@@ -92,7 +96,7 @@
 			fragment.appendChild(option);
 		});
 
-		[].slice.call(selects).forEach(function (select) {
+		toArray(selects).forEach(function (select) {
 			select.appendChild(fragment.cloneNode(true));
 		});
 	},
@@ -113,7 +117,7 @@
 
 		setupUnits();
 
-		[].slice.call(elements).forEach(function (element) {
+		toArray(elements).forEach(function (element) {
 			element.addEventListener('change', run);
 			element.addEventListener('keyup', run);
 		});
