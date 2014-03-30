@@ -125,11 +125,11 @@
 	};
 
 	window.addEventListener('DOMContentLoaded', function () {
-		var elements = document.querySelectorAll('input, select');
+		var elements = toArray(document.querySelectorAll('input, select'));
 
 		setupForm();
 
-		toArray(elements).forEach(function (element) {
+		elements.forEach(function (element) {
 			element.addEventListener('change', run);
 			element.addEventListener('keyup', run);
 		});
@@ -143,7 +143,7 @@
 
 		// Save all values once a minute
 		setInterval(function () {
-			toArray(elements).forEach(function (element) {
+			elements.forEach(function (element) {
 				localStorage.setItem(element.name, element.value);
 			});
 		}, 60000);
