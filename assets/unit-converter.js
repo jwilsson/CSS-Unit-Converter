@@ -102,7 +102,7 @@
 	},
 
 	run = function () {
-		document.querySelector('.result').innerHTML = convert(
+		document.querySelector('.result').textContent = convert(
 			document.querySelector('.from').value,
 			document.querySelector('.from-unit').value,
 			document.querySelector('.to-unit').value,
