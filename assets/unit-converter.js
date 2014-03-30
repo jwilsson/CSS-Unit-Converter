@@ -82,11 +82,15 @@
 	},
 
 	setupForm = function () {
-		var selects = document.querySelectorAll('select'),
+		var from = document.querySelector('.from'),
+			selects = document.querySelectorAll('select'),
 			settings = document.querySelectorAll('.settings input'),
 			fragment = document.createDocumentFragment(),
 			options = [],
 			units = ['cm', 'em', 'in', 'mm', 'pc', 'pt', '%', 'px'];
+
+		// Set from value
+		from.value = localStorage.getItem(from.name) || '';
 
 		// Add the units
 		units.forEach(function (unit) {
@@ -99,10 +103,19 @@
 		});
 
 		toArray(selects).forEach(function (select) {
-			var fromUnit = localStorage.getItem('from-unit'),
-				toUnit = localStorage.getItem('to-unit');
+			var unit = localStorage.getItem(select.name),
+				selected;
+
+			if (unit) {
+				selected = fragment.querySelector('[value=' + unit + ']');
+				selected.defaultSelected = true;
+			}
 
 			select.appendChild(fragment.cloneNode(true));
+
+			if (selected) {
+				selected.defaultSelected = false;
+			}
 		});
 
 		// Add settings
