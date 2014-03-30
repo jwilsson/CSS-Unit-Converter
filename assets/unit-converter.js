@@ -77,6 +77,26 @@
 		return (isNaN(result) ? 'N/A' : roundNumber(result, decimals) + to);
 	},
 
+	setupUnits = function () {
+		var selects = document.querySelectorAll('select'),
+			fragment = document.createDocumentFragment(),
+			options = [],
+			units = ['cm', 'em', 'in', 'mm', 'pc', 'pt', '%', 'px'];
+
+		units.forEach(function (unit) {
+			var option = document.createElement('option');
+
+			option.value = unit;
+			option.textContent = unit;
+
+			fragment.appendChild(option);
+		});
+
+		[].slice.call(selects).forEach(function (select) {
+			select.appendChild(fragment.cloneNode(true));
+		});
+	},
+
 	run = function () {
 		document.querySelector('.result').innerHTML = convert(
 			document.querySelector('.from').value,
@@ -90,6 +110,8 @@
 
 	window.addEventListener('DOMContentLoaded', function () {
 		var elements = document.querySelectorAll('input, select');
+
+		setupUnits();
 
 		[].slice.call(elements).forEach(function (element) {
 			element.addEventListener('change', run);
