@@ -102,6 +102,7 @@
             fragment.appendChild(option);
         });
 
+        // Select correct value
         toArray(selects).forEach(function (select) {
             var unit = localStorage.getItem(select.name),
                 selected;
