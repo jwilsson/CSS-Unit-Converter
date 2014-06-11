@@ -1,5 +1,5 @@
 ;(function () {
-    var roundNumber = function (number, decimals) {
+    var round = function (number, decimals) {
         return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
     },
 
@@ -78,7 +78,7 @@
 
         result = formulas[units] || value;
 
-        return (isNaN(result) ? 'N/A' : roundNumber(result, decimals) + to);
+        return (isNaN(result) ? 'N/A' : round(result, decimals) + to);
     },
 
     setupForm = function () {
