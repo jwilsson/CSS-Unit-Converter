@@ -1,4 +1,6 @@
 ;(function () {
+    'use strict';
+
     var round = function (number, decimals) {
         return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
     },
@@ -86,7 +88,6 @@
             selects = document.querySelectorAll('select'),
             settings = document.querySelectorAll('.settings input'),
             fragment = document.createDocumentFragment(),
-            options = [],
             units = ['cm', 'em', 'in', 'mm', 'pc', 'pt', '%', 'px'];
 
         // Set from value
