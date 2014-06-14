@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var minify = require('gulp-minify-css');
 var rename = require('gulp-rename');
+var rev = require('gulp-rev-append');
 var uglify = require('gulp-uglify');
 
 var path = 'assets/';
@@ -23,4 +24,10 @@ gulp.task('uglify', function () {
         .pipe(gulp.dest('.'));
 });
 
-gulp.task('default', ['minify', 'uglify']);
+gulp.task('rev', function () {
+    gulp.src('./index.html')
+    .pipe(rev())
+    .pipe(gulp.dest('.'));
+});
+
+gulp.task('default', ['minify', 'uglify', 'rev']);
