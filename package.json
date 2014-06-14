@@ -1,0 +1,7 @@
+{
+  "name": "CSS Unit Converter",
+  "version": "2.5.1",
+  "devDependencies": {
+    "gulp": "~3.8.0"
+  }
+}
