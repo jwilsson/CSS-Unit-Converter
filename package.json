@@ -1,7 +1,10 @@
 {
-  "name": "CSS Unit Converter",
+  "name": "css-unit-converter",
   "version": "2.5.1",
   "devDependencies": {
-    "gulp": "~3.8.0"
+    "gulp": "~3.8.0",
+    "gulp-changed": "~0.4.0",
+    "gulp-minify-css": "~0.3.4",
+    "gulp-uglify": "~0.3.0"
   }
 }
