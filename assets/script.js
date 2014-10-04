@@ -5,10 +5,6 @@
         return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
     },
 
-    toArray = function (object) {
-        return [].slice.call(object);
-    },
-
     convert = function (value, from, to, base, dpi, decimals) {
         var units = from + '-' + to,
             result,
@@ -104,7 +100,7 @@
         });
 
         // Select correct value
-        toArray(selects).forEach(function (select) {
+        [].forEach.call(selects, function (select) {
             var unit = localStorage.getItem(select.name),
                 selected;
 
@@ -121,7 +117,7 @@
         });
 
         // Add settings
-        toArray(settings).forEach(function (setting) {
+        [].forEach.call(settings, function (setting) {
             var name = setting.name;
 
             setting.value = localStorage.getItem(name) || setting.value;
@@ -140,11 +136,11 @@
     };
 
     window.addEventListener('DOMContentLoaded', function () {
-        var elements = toArray(document.querySelectorAll('input, select'));
+        var elements = document.querySelectorAll('input, select');
 
         setupForm();
 
-        elements.forEach(function (element) {
+        [].forEach.call(elements, function (element) {
             element.addEventListener('change', run);
             element.addEventListener('keyup', run);
         });
@@ -158,7 +154,7 @@
 
         // Save all values once every 30 seconds
         setInterval(function () {
-            elements.forEach(function (element) {
+            [].forEach.call(elements, function (element) {
                 localStorage.setItem(element.name, element.value);
             });
         }, 30000);
