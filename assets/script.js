@@ -1,7 +1,11 @@
 ;(function () {
     'use strict';
 
-    var convert = function (value, from, to, base, dpi, decimals) {
+    var round = function (number, decimals) {
+        return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
+    },
+
+    convert = function (value, from, to, base, dpi, decimals) {
         var units = from + '-' + to,
             result,
             formulas = {
@@ -71,9 +75,8 @@
             };
 
         result = formulas[units];
-        result = Number(result).toFixed(decimals) + to;
 
-        return (isNaN(result) ? 'N/A' : result);
+        return (isNaN(result) ? 'N/A' : round(result, decimals) + to);
     },
 
     setupForm = function () {
