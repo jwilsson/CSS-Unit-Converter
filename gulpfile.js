@@ -5,8 +5,6 @@ var rename = require('gulp-rename');
 var rev = require('gulp-rev-append');
 var uglify = require('gulp-uglify');
 
-var path = 'assets/';
-
 gulp.task('jshint', function () {
     return gulp.src('./assets/script.js')
         .pipe(jshint())
@@ -14,20 +12,16 @@ gulp.task('jshint', function () {
 });
 
 gulp.task('minify', function () {
-    var name = 'style';
-
-    return gulp.src(path + name + '.css')
+    return gulp.src('./assets/style.css')
         .pipe(minify())
-        .pipe(rename(path + name + '.min.css'))
+        .pipe(rename('./assets/style.min.css'))
         .pipe(gulp.dest('.'));
 });
 
 gulp.task('uglify', function () {
-    var name = 'script';
-
-    return gulp.src(path + name + '.js')
+    return gulp.src('./assets/script.js')
         .pipe(uglify())
-        .pipe(rename(path + name + '.min.js'))
+        .pipe(rename('./assets/script.min.js'))
         .pipe(gulp.dest('.'));
 });
 
