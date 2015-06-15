@@ -90,7 +90,7 @@
         from.value = localStorage.getItem(from.name) || '';
 
         // Add the units
-        units.forEach(function (unit) {
+        units.forEach((unit) => {
             var option = document.createElement('option');
 
             option.value = unit;
@@ -100,7 +100,7 @@
         });
 
         // Select correct value
-        [].forEach.call(selects, function (select) {
+        [].forEach.call(selects, (select) => {
             var unit = localStorage.getItem(select.name);
             var selected;
 
@@ -117,7 +117,7 @@
         });
 
         // Add settings
-        [].forEach.call(settings, function (setting) {
+        [].forEach.call(settings, (setting) => {
             var name = setting.name;
 
             setting.value = localStorage.getItem(name) || setting.value;
@@ -135,26 +135,26 @@
         );
     };
 
-    window.addEventListener('DOMContentLoaded', function () {
+    window.addEventListener('DOMContentLoaded', () => {
         var elements = document.querySelectorAll('input, select');
 
         setupForm();
 
-        [].forEach.call(elements, function (element) {
+        [].forEach.call(elements, (element) => {
             element.addEventListener('change', run);
             element.addEventListener('keyup', run);
         });
 
         // Toogle display of setting forms
-        document.querySelector('.toggle').addEventListener('click', function (e) {
+        document.querySelector('.toggle').addEventListener('click', (e) => {
             e.preventDefault();
 
             document.querySelector('.settings').classList.toggle('show');
         });
 
         // Save all values once every 30 seconds
-        setInterval(function () {
-            [].forEach.call(elements, function (element) {
+        setInterval(() => {
+            [].forEach.call(elements, (element) => {
                 localStorage.setItem(element.name, element.value);
             });
         }, 30000);

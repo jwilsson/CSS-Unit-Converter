@@ -1,3 +1,4 @@
+import babel from 'gulp-babel';
 import concat from 'gulp-concat';
 import del from 'del';
 import gulp from 'gulp';
@@ -45,6 +46,7 @@ gulp.task('lint-js', () => {
 
 gulp.task('scripts', ['lint-js'], () => {
     return gulp.src('./src/js/**/*.js')
+        .pipe(babel())
         .pipe(concat('script.min.js'))
         .pipe(gulpif(IS_PRODUCTION, uglify())) // Only minify when in production
         .pipe(gulp.dest('./assets/js'));
