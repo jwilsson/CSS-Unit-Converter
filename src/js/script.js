@@ -3,12 +3,12 @@
 
     var round = function (number, decimals) {
         return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
-    },
+    };
 
-    convert = function (value, from, to, base, dpi, decimals) {
-        var units = from + '-' + to,
-            result,
-            formulas = {
+    var convert = function (value, from, to, base, dpi, decimals) {
+        var units = from + '-' + to;
+        var result;
+        var formulas = {
                 'cm-em': value / 0.42175176,
                 'cm-in': value * 0.39,
                 'cm-mm': value * 10,
@@ -77,14 +77,14 @@
         result = formulas[units];
 
         return (isNaN(result) ? 'N/A' : round(result, decimals) + to);
-    },
+    };
 
-    setupForm = function () {
-        var from = document.querySelector('.from'),
-            selects = document.querySelectorAll('select'),
-            settings = document.querySelectorAll('.settings input'),
-            fragment = document.createDocumentFragment(),
-            units = ['cm', 'em', 'in', 'mm', 'pc', 'pt', '%', 'px'];
+    var setupForm = function () {
+        var from = document.querySelector('.from');
+        var selects = document.querySelectorAll('select');
+        var settings = document.querySelectorAll('.settings input');
+        var fragment = document.createDocumentFragment();
+        var units = ['cm', 'em', 'in', 'mm', 'pc', 'pt', '%', 'px'];
 
         // Set from value
         from.value = localStorage.getItem(from.name) || '';
@@ -101,8 +101,8 @@
 
         // Select correct value
         [].forEach.call(selects, function (select) {
-            var unit = localStorage.getItem(select.name),
-                selected;
+            var unit = localStorage.getItem(select.name);
+            var selected;
 
             if (unit) {
                 selected = fragment.querySelector('[value="' + unit + '"]');
@@ -122,9 +122,9 @@
 
             setting.value = localStorage.getItem(name) || setting.value;
         });
-    },
+    };
 
-    run = function () {
+    var run = function () {
         document.querySelector('.result').textContent = convert(
             document.querySelector('.from').value,
             document.querySelector('.from-unit').value,
