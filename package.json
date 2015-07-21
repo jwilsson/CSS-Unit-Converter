@@ -1,7 +1,7 @@
 {
   "name": "css-unit-converter",
   "devDependencies": {
-    "babel": "^5.5.8",
+    "babel-core": "^5.8.3",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.2.0",
     "gulp-babel": "^5.1.0",
