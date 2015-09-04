@@ -1,21 +1,22 @@
 {
   "name": "css-unit-converter",
   "devDependencies": {
-    "babel-core": "^5.8.3",
-    "gulp": "^3.8.11",
-    "gulp-autoprefixer": "^2.2.0",
-    "gulp-babel": "^5.1.0",
-    "gulp-concat": "^2.5.2",
+    "babel": "^5.8.23",
+    "del": "^2.0.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.1",
+    "gulp-babel": "^5.2.1",
+    "gulp-concat": "^2.6.0",
     "gulp-if": "^1.2.5",
     "gulp-jscs": "^2.0.0",
-    "gulp-jshint": "^1.10.0",
-    "gulp-minify-css": "^1.1.1",
+    "gulp-jshint": "^1.11.2",
+    "gulp-minify-css": "^1.2.1",
     "gulp-rename": "^1.2.2",
     "gulp-rev-append": "^0.1.6",
-    "gulp-sass": "^2.0.0",
-    "gulp-scss-lint": "^0.2.0",
-    "gulp-uglify": "^1.2.0",
-    "gulp-watch": "^4.2.4",
-    "yargs": "^3.8.0"
+    "gulp-sass": "^2.0.4",
+    "gulp-scss-lint": "^0.3.0",
+    "gulp-uglify": "^1.4.0",
+    "gulp-watch": "^4.3.5",
+    "yargs": "^3.24.0"
   }
 }
