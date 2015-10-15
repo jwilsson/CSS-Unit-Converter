@@ -1,4 +1,4 @@
-;(function (window, document) {
+(function (window, document) {
     'use strict';
 
     var round = function (number, decimals) {
@@ -72,7 +72,7 @@
             'px-mm': value * 2.54 / dpi * 10,
             'px-pc': value / base,
             'px-pt': value * 72 / 96,
-            'px-%': value / base * 100
+            'px-%': value / base * 100,
         };
 
         result = FORMULAS[units];

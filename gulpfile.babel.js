@@ -1,9 +1,8 @@
 import babel from 'gulp-babel';
 import concat from 'gulp-concat';
+import eslint from 'gulp-eslint';
 import gulp from 'gulp';
 import gulpif from 'gulp-if';
-import jscs from 'gulp-jscs';
-import jshint from 'gulp-jshint';
 import minify from 'gulp-minify-css';
 import rename from 'gulp-rename';
 import rev from 'gulp-rev-append';
@@ -17,10 +16,8 @@ const IS_PRODUCTION = !!(yargs.argv.prod); // true if --prod flag is used
 
 gulp.task('lint-js', () => {
     return gulp.src(['./src/js/**/*.js', '!./src/js/vendor/**/*.js'])
-        .pipe(jscs())
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
-        .pipe(jshint.reporter('fail'));
+        .pipe(eslint())
+        .pipe(eslint.format());
 });
 
 gulp.task('scripts', ['lint-js'], () => {
@@ -43,7 +40,7 @@ gulp.task('styles', ['lint-scss'], () => {
             console.log(err.message);
         })
         .pipe(rename({
-            suffix: '.min'
+            suffix: '.min',
         }))
         .pipe(gulpif(IS_PRODUCTION, minify())) // Only minify when in production
         .pipe(gulp.dest('./assets/css'));
