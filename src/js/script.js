@@ -1,11 +1,11 @@
-(function (window, document) {
+((window, document) => {
     'use strict';
 
-    var round = function (number, decimals) {
+    var round = (number, decimals) => {
         return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
     };
 
-    var convert = function (value, from, to, base, dpi, decimals) {
+    var convert = (value, from, to, base, dpi, decimals) => {
         var units = from + '-' + to;
         var result;
 
@@ -80,7 +80,7 @@
         return (isNaN(result) ? 'N/A' : round(result, decimals) + to);
     };
 
-    var setupForm = function () {
+    var setupForm = () => {
         var settings = document.querySelectorAll('.settings input');
         var fragment = document.createDocumentFragment();
         var selects = document.querySelectorAll('select');
@@ -124,7 +124,7 @@
         });
     };
 
-    var run = function () {
+    var run = () => {
         document.querySelector('.result').textContent = convert(
             document.querySelector('.from').value,
             document.querySelector('.from-unit').value,
@@ -159,4 +159,4 @@
             });
         }, 30000);
     });
-}(window, document));
+})(window, document);
