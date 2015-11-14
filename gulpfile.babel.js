@@ -4,10 +4,11 @@ import eslint from 'gulp-eslint';
 import gulp from 'gulp';
 import gulpif from 'gulp-if';
 import minify from 'gulp-minify-css';
+import nested from 'postcss-nested'
+import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
 import rev from 'gulp-rev-append';
-import sass from 'gulp-sass';
-import scsslint from 'gulp-scss-lint';
+import stylelint from 'stylelint';
 import uglify from 'gulp-uglify';
 import watch from 'gulp-watch';
 import yargs from 'yargs';
@@ -28,16 +29,14 @@ gulp.task('scripts', ['lint-js'], () => {
         .pipe(gulp.dest('./assets/js'));
 });
 
-gulp.task('lint-scss', () => {
-    return gulp.src(['./src/scss/**/*.scss', '!./src/scss/vendor/**/*.scss'])
-        .pipe(scsslint());
-});
-
-gulp.task('styles', ['lint-scss'], () => {
-    return gulp.src('./src/scss/style.scss')
-        .pipe(sass())
-        .on('error', function (err) {
-            console.log(err.message);
+gulp.task('styles', () => {
+    return gulp.src('./src/css/style.css')
+        .pipe(postcss([
+            nested,
+            stylelint,
+        ]))
+        .on('error', function (error) {
+            console.log(error);
         })
         .pipe(rename({
             suffix: '.min',
@@ -57,7 +56,7 @@ gulp.task('watch', ['default'], () => {
         gulp.start('scripts');
     });
 
-    watch('./src/scss/**/*.scss', () => {
+    watch('./src/css/style.css', () => {
         gulp.start('styles');
     });
 });
