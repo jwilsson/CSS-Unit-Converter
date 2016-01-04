@@ -1,9 +1,9 @@
 import babel from 'gulp-babel';
 import concat from 'gulp-concat';
+import cssnano from 'gulp-cssnano';
 import eslint from 'gulp-eslint';
 import gulp from 'gulp';
 import gulpif from 'gulp-if';
-import minify from 'gulp-minify-css';
 import nested from 'postcss-nested'
 import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
@@ -41,7 +41,7 @@ gulp.task('styles', () => {
         .pipe(rename({
             suffix: '.min',
         }))
-        .pipe(gulpif(IS_PRODUCTION, minify())) // Only minify when in production
+        .pipe(gulpif(IS_PRODUCTION, cssnano())) // Only minify when in production
         .pipe(gulp.dest('./assets/css'));
 });
 
