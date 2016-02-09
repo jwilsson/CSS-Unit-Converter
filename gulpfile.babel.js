@@ -76,7 +76,6 @@ gulp.task('index', ['rev'], () => {
         .pipe(rename({
             extname: '.html',
         }))
-
         .pipe(gulp.dest('.'));
 });
 
