@@ -24,7 +24,7 @@
     "key-spacing": 2,
     "keyword-spacing": [2, {
       "after": true,
-      "before": false
+      "before": true
     }],
     "linebreak-style": 2,
     "newline-after-var": 2,
