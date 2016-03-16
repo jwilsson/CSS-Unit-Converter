@@ -17,7 +17,7 @@
     "gulp-uglify": "^1.4.0",
     "gulp-watch": "^4.3.5",
     "postcss-nested": "^1.0.0",
-    "stylelint": "^4.1.0",
+    "stylelint": "^5.0.1",
     "stylelint-config-standard": "^4.0.0",
     "yargs": "^4.2.0"
   }
