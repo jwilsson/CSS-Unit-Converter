@@ -4,7 +4,7 @@ Use the CSS Unit Converter to convert values between almost every CSS [&lt;lengt
 Check it out in action at https://jwilsson.com/unit-converter/.
 
 ## Building
-Make sure [Node.js](https://nodejs.org/) or [io.js](https://iojs.org/) and [gulp](http://gulpjs.com/) is installed.
+Make sure [Node.js](https://nodejs.org/) and [gulp](http://gulpjs.com/) is installed.
 
 Install all dependencies
 
