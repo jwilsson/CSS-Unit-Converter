@@ -146,9 +146,7 @@
         });
 
         // Toogle display of setting forms
-        document.querySelector('.toggle').addEventListener('click', (e) => {
-            e.preventDefault();
-
+        document.querySelector('.toggle').addEventListener('click', () => {
             document.querySelector('.settings').classList.toggle('show');
         });
 

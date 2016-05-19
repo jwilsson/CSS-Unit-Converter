@@ -95,6 +95,22 @@ span {
     font-size: 1.8rem;
 }
 
+button {
+    background-color: transparent;
+    border: 0;
+    color: #8eafce;
+    cursor: pointer;
+    font: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+        color: #333333;
+    }
+}
+
 input {
     font-size: 2.2rem;
     height: 50px;
