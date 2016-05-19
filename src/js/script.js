@@ -1,15 +1,13 @@
 ((window, document) => {
     'use strict';
 
-    var round = (number, decimals) => {
+    const round = (number, decimals) => {
         return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
     };
 
-    var convert = (value, from, to, base, dpi, decimals) => {
-        var units = from + '-' + to;
-        var result;
-
-        const FORMULAS = {
+    const convert = (value, from, to, base, dpi, decimals) => {
+        const units = from + '-' + to;
+        const formulas = {
             'cm-em': value / 0.42175176,
             'cm-in': value * 0.39,
             'cm-mm': value * 10,
@@ -75,25 +73,24 @@
             'px-%': value / base * 100,
         };
 
-        result = FORMULAS[units];
+        const result = formulas[units];
 
         return (isNaN(result) ? 'N/A' : round(result, decimals) + to);
     };
 
-    var setupForm = () => {
-        var settings = document.querySelectorAll('.settings input');
-        var fragment = document.createDocumentFragment();
-        var selects = document.querySelectorAll('select');
-        var from = document.querySelector('.from');
-
-        const UNITS = ['cm', 'em', 'in', 'mm', 'pc', 'pt', '%', 'px'];
+    const setupForm = () => {
+        const settings = document.querySelectorAll('.settings input');
+        const fragment = document.createDocumentFragment();
+        const selects = document.querySelectorAll('select');
+        const from = document.querySelector('.from');
+        const units = ['cm', 'em', 'in', 'mm', 'pc', 'pt', '%', 'px'];
 
         // Set from value
         from.value = localStorage.getItem(from.name) || '';
 
         // Add the units
-        UNITS.forEach((unit) => {
-            var option = document.createElement('option');
+        units.forEach((unit) => {
+            const option = document.createElement('option');
 
             option.value = unit;
             option.textContent = unit;
@@ -103,8 +100,8 @@
 
         // Select correct value
         [].forEach.call(selects, (select) => {
-            var unit = localStorage.getItem(select.name);
-            var selected;
+            const unit = localStorage.getItem(select.name);
+            let selected;
 
             if (unit) {
                 selected = fragment.querySelector(`[value="${unit}"]`);
@@ -124,7 +121,7 @@
         });
     };
 
-    var run = () => {
+    const run = () => {
         document.querySelector('.result').textContent = convert(
             document.querySelector('.from').value,
             document.querySelector('.from-unit').value,
@@ -136,7 +133,7 @@
     };
 
     window.addEventListener('DOMContentLoaded', () => {
-        var elements = document.querySelectorAll('input, select');
+        const elements = document.querySelectorAll('input, select');
 
         setupForm();
 
