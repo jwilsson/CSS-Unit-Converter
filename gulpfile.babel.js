@@ -69,7 +69,7 @@ gulp.task('rev', ['scripts', 'styles'], () => {
 });
 
 gulp.task('index', ['rev'], () => {
-    let manifest = JSON.parse(fs.readFileSync('./assets/rev-manifest.json', 'utf8'));
+    const manifest = JSON.parse(fs.readFileSync('./assets/rev-manifest.json', 'utf8'));
 
     return gulp.src('./src/index.hbs')
         .pipe(handlebars(manifest))
@@ -80,13 +80,9 @@ gulp.task('index', ['rev'], () => {
 });
 
 gulp.task('watch', ['default'], () => {
-    watch('./src/js/**/*.js', () => {
-        gulp.start('scripts');
-    });
-
-    watch('./src/css/style.css', () => {
-        gulp.start('styles');
+    watch(['./src/css/style.css', './src/js/**/*.js'], () => {
+        gulp.start('index');
     });
 });
 
-gulp.task('default', ['scripts', 'styles', 'index']);
+gulp.task('default', ['index']);
