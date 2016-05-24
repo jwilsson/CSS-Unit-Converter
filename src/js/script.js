@@ -5,77 +5,77 @@
         return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
     };
 
-    const convert = (value, from, to, base, dpi, decimals) => {
-        const units = from + '-' + to;
+    const convert = (options) => {
+        const units = options.from + '-' + options.to;
         const formulas = {
-            'cm-em': value / 0.42175176,
-            'cm-in': value * 0.39,
-            'cm-mm': value * 10,
-            'cm-pc': value / 0.42175176,
-            'cm-pt': value * 28.3464566929,
-            'cm-%': value / base * 100 / 2.54 * dpi,
-            'cm-px': value / 2.54 * dpi,
+            'cm-em': options.value / 0.42175176,
+            'cm-in': options.value * 0.39,
+            'cm-mm': options.value * 10,
+            'cm-pc': options.value / 0.42175176,
+            'cm-pt': options.value * 28.3464566929,
+            'cm-%': options.value / options.base * 100 / 2.54 * options.dpi,
+            'cm-px': options.value / 2.54 * options.dpi,
 
-            'em-cm': value * 0.42175176,
-            'em-in': value * 0.166044,
-            'em-mm': value / 0.237106301584,
-            'em-pc': value,
-            'em-pt': value * 11.955168,
-            'em-%': value * 100,
-            'em-px': value * base,
+            'em-cm': options.value * 0.42175176,
+            'em-in': options.value * 0.166044,
+            'em-mm': options.value / 0.237106301584,
+            'em-pc': options.value,
+            'em-pt': options.value * 11.955168,
+            'em-%': options.value * 100,
+            'em-px': options.value * options.base,
 
-            'in-cm': value * 2.54,
-            'in-em': value / 0.166044,
-            'in-mm': value * 2.54 * 10,
-            'in-pc': value / 0.166044,
-            'in-pt': value / 0.014842519685,
-            'in-%': value / base * 100 * dpi,
-            'in-px': value * dpi,
+            'in-cm': options.value * 2.54,
+            'in-em': options.value / 0.166044,
+            'in-mm': options.value * 2.54 * 10,
+            'in-pc': options.value / 0.166044,
+            'in-pt': options.value / 0.014842519685,
+            'in-%': options.value / options.base * 100 * options.dpi,
+            'in-px': options.value * options.dpi,
 
-            'mm-cm': value / 10,
-            'mm-em': value * 0.237106301584,
-            'mm-in': value * 0.39 / 10,
-            'mm-pc': value / 4.42175176,
-            'mm-pt': value / 0.352777777778,
-            'mm-%': value / base * 100 / 2.54 * dpi / 10,
-            'mm-px': value / 2.54 * dpi / 10,
+            'mm-cm': options.value / 10,
+            'mm-em': options.value * 0.237106301584,
+            'mm-in': options.value * 0.39 / 10,
+            'mm-pc': options.value / 4.42175176,
+            'mm-pt': options.value / 0.352777777778,
+            'mm-%': options.value / options.base * 100 / 2.54 * options.dpi / 10,
+            'mm-px': options.value / 2.54 * options.dpi / 10,
 
-            'pc-cm': value * 0.42175176,
-            'pc-em': value,
-            'pc-in': value * 0.166044,
-            'pc-mm': value * 4.42175176,
-            'pc-pt': value / 0.0836458341698,
-            'pc-%': value * 100,
-            'pc-px': value * base,
+            'pc-cm': options.value * 0.42175176,
+            'pc-em': options.value,
+            'pc-in': options.value * 0.166044,
+            'pc-mm': options.value * 4.42175176,
+            'pc-pt': options.value / 0.0836458341698,
+            'pc-%': options.value * 100,
+            'pc-px': options.value * options.base,
 
-            'pt-cm': value / 28.3464566929,
-            'pt-em': value / 11.955168,
-            'pt-in': value * 0.014842519685,
-            'pt-mm': value * 0.352777777778,
-            'pt-pc': value * 0.0836458341698,
-            'pt-%': value / (base - 4) * 100,
-            'pt-px': value * 96 / 72,
+            'pt-cm': options.value / 28.3464566929,
+            'pt-em': options.value / 11.955168,
+            'pt-in': options.value * 0.014842519685,
+            'pt-mm': options.value * 0.352777777778,
+            'pt-pc': options.value * 0.0836458341698,
+            'pt-%': options.value / (options.base - 4) * 100,
+            'pt-px': options.value * 96 / 72,
 
-            '%-cm': value * base / 100 * 2.54 / dpi,
-            '%-em': value / 100,
-            '%-in': value * base / 100 / dpi,
-            '%-mm': value * base / 100 * 2.54 / dpi * 10,
-            '%-pc': value / 100,
-            '%-pt': value * (base - 4) / 100,
-            '%-px': value * base / 100,
+            '%-cm': options.value * options.base / 100 * 2.54 / options.dpi,
+            '%-em': options.value / 100,
+            '%-in': options.value * options.base / 100 / options.dpi,
+            '%-mm': options.value * options.base / 100 * 2.54 / options.dpi * 10,
+            '%-pc': options.value / 100,
+            '%-pt': options.value * (options.base - 4) / 100,
+            '%-px': options.value * options.base / 100,
 
-            'px-cm': value * 2.54 / dpi,
-            'px-em': value / base,
-            'px-in': value / dpi,
-            'px-mm': value * 2.54 / dpi * 10,
-            'px-pc': value / base,
-            'px-pt': value * 72 / 96,
-            'px-%': value / base * 100,
+            'px-cm': options.value * 2.54 / options.dpi,
+            'px-em': options.value / options.base,
+            'px-in': options.value / options.dpi,
+            'px-mm': options.value * 2.54 / options.dpi * 10,
+            'px-pc': options.value / options.base,
+            'px-pt': options.value * 72 / 96,
+            'px-%': options.value / options.base * 100,
         };
 
         const result = formulas[units];
 
-        return (isNaN(result) ? 'N/A' : round(result, decimals) + to);
+        return (isNaN(result) ? 'N/A' : round(result, options.decimals) + options.to);
     };
 
     const setupForm = () => {
@@ -122,14 +122,14 @@
     };
 
     const run = () => {
-        document.querySelector('.result').textContent = convert(
-            document.querySelector('.from').value,
-            document.querySelector('.from-unit').value,
-            document.querySelector('.to-unit').value,
-            document.querySelector('.base-size').value,
-            document.querySelector('.dpi').value,
-            document.querySelector('.decimals').value
-        );
+        document.querySelector('.result').textContent = convert({
+            value: document.querySelector('.from').value,
+            from: document.querySelector('.from-unit').value,
+            to: document.querySelector('.to-unit').value,
+            base: document.querySelector('.base-size').value,
+            dpi: document.querySelector('.dpi').value,
+            decimals: document.querySelector('.decimals').value,
+        });
     };
 
     window.addEventListener('DOMContentLoaded', () => {
