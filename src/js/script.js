@@ -99,7 +99,7 @@
         });
 
         // Select correct value
-        [].forEach.call(selects, (select) => {
+        Reflect.apply(Array.prototype.forEach, selects, [(select) => {
             const unit = localStorage.getItem(select.name);
             let selected;
 
@@ -113,12 +113,12 @@
             if (selected) {
                 selected.defaultSelected = false;
             }
-        });
+        }]);
 
         // Add settings
-        [].forEach.call(settings, (setting) => {
+        Reflect.apply(Array.prototype.forEach, settings, [(setting) => {
             setting.value = localStorage.getItem(setting.name) || setting.value;
-        });
+        }]);
     };
 
     const run = () => {
@@ -137,10 +137,10 @@
 
         setupForm();
 
-        [].forEach.call(elements, (element) => {
+        Reflect.apply(Array.prototype.forEach, elements, [(element) => {
             element.addEventListener('change', run);
             element.addEventListener('keyup', run);
-        });
+        }]);
 
         // Toogle display of setting forms
         document.querySelector('.toggle').addEventListener('click', () => {
@@ -149,9 +149,9 @@
 
         // Save all values once every 30 seconds
         setInterval(() => {
-            [].forEach.call(elements, (element) => {
+            Reflect.apply(Array.prototype.forEach, elements, [(element) => {
                 localStorage.setItem(element.name, element.value);
-            });
+            }]);
         }, 30000);
     });
 })(window, document);
