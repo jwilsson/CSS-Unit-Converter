@@ -6,7 +6,7 @@
     };
 
     const convert = (options) => {
-        const units = options.from + '-' + options.to;
+        const units = `${ options.from }-${ options.to }`;
         const formulas = {
             'cm-em': options.value / 0.42175176,
             'cm-in': options.value * 0.39,
@@ -104,7 +104,7 @@
             let selected;
 
             if (unit) {
-                selected = fragment.querySelector(`[value="${unit}"]`);
+                selected = fragment.querySelector(`[value="${ unit }"]`);
                 selected.defaultSelected = true;
             }
 
