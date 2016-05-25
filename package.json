@@ -19,7 +19,7 @@
     "gulp-watch": "^4.3.5",
     "postcss-nested": "^1.0.0",
     "stylelint": "^6.0.1",
-    "stylelint-config-standard": "^7.0.0",
+    "stylelint-config-jwilsson": "jwilsson/stylelint-config",
     "yargs": "^4.2.0"
   }
 }
