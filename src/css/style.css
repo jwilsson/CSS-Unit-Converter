@@ -25,7 +25,7 @@ body {
 }
 
 header {
-    background: linear-gradient(to bottom, #b9b9b9 0%, #dcdcdc 2%, #c5c5c5 4%, #bebebe 23%, #9d9d9d 81%, #969696 100%);
+    background: linear-gradient(to bottom, #dddddd 0%, #d8d8d8 33%, #cecece 67%, #c6c6c6 100%);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -64,7 +64,7 @@ footer {
 }
 
 h1 {
-    color: #14222f;
+    color: #111111;
     font-size: 2rem;
     font-weight: 700;
     height: 54px;
@@ -72,7 +72,6 @@ h1 {
     margin-bottom: 0.4em;
     margin-top: 0;
     text-indent: 15px;
-    text-shadow: 1px 1px 1px #ffffff;
 }
 
 h2 {
