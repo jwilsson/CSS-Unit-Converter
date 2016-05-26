@@ -8,6 +8,17 @@
     const convert = (options) => {
         const units = `${ options.from }-${ options.to }`;
         const formulas = {
+            'ch-cm': options.value * 0.21087588,
+            'ch-em': options.value * 0.5,
+            'ch-ex': options.value / 0.9,
+            'ch-in': options.value * 0.083022,
+            'ch-mm': options.value * 2.1087588,
+            'ch-pc': options.value * 0.5,
+            'ch-pt': options.value * 5.977584,
+            'ch-%': options.value * 50,
+            'ch-px': options.value * options.base * 0.5,
+
+            'cm-ch': options.value / 0.21087588,
             'cm-em': options.value / 0.42175176,
             'cm-ex': options.value / 0.189788292,
             'cm-in': options.value * 0.39,
@@ -17,6 +28,7 @@
             'cm-%': options.value / options.base * 100 / 2.54 * options.dpi,
             'cm-px': options.value / 2.54 * options.dpi,
 
+            'em-ch': options.value / 0.5,
             'em-cm': options.value * 0.42175176,
             'em-ex': options.value / 0.45,
             'em-in': options.value * 0.166044,
@@ -26,6 +38,7 @@
             'em-%': options.value * 100,
             'em-px': options.value * options.base,
 
+            'ex-ch': options.value * 0.9,
             'ex-cm': options.value * 0.189788292,
             'ex-em': options.value * 0.45,
             'ex-in': options.value * 0.0747198,
@@ -35,6 +48,7 @@
             'ex-%': options.value * 45,
             'ex-px': options.value * options.base * 0.45,
 
+            'in-ch': options.value / 0.083022,
             'in-cm': options.value * 2.54,
             'in-em': options.value / 0.166044,
             'in-ex': options.value / 0.0747198,
@@ -44,6 +58,7 @@
             'in-%': options.value / options.base * 100 * options.dpi,
             'in-px': options.value * options.dpi,
 
+            'mm-ch': options.value / 2.1087588,
             'mm-cm': options.value / 10,
             'mm-em': options.value * 0.237106301584,
             'mm-ex': options.value / 1.89788292,
@@ -53,6 +68,7 @@
             'mm-%': options.value / options.base * 100 / 2.54 * options.dpi / 10,
             'mm-px': options.value / 2.54 * options.dpi / 10,
 
+            'pc-ch': options.value / 0.5,
             'pc-cm': options.value * 0.42175176,
             'pc-em': options.value,
             'pc-ex': options.value / 0.45,
@@ -62,6 +78,7 @@
             'pc-%': options.value * 100,
             'pc-px': options.value * options.base,
 
+            'pt-ch': options.value / 5.977584,
             'pt-cm': options.value / 28.3464566929,
             'pt-em': options.value / 11.955168,
             'pt-ex': options.value / 5.3798256,
@@ -71,6 +88,7 @@
             'pt-%': options.value / (options.base - 4) * 100,
             'pt-px': options.value * 96 / 72,
 
+            '%-ch': options.value / 50,
             '%-cm': options.value * options.base / 100 * 2.54 / options.dpi,
             '%-em': options.value / 100,
             '%-ex': options.value / 45,
@@ -80,6 +98,7 @@
             '%-pt': options.value * (options.base - 4) / 100,
             '%-px': options.value * options.base / 100,
 
+            'px-ch': options.value / options.base / 0.5,
             'px-cm': options.value * 2.54 / options.dpi,
             'px-em': options.value / options.base,
             'px-ex': options.value / options.base / 0.45,
@@ -100,7 +119,7 @@
         const fragment = document.createDocumentFragment();
         const selects = document.querySelectorAll('select');
         const from = document.querySelector('.from');
-        const units = ['cm', 'em', 'ex', 'in', 'mm', 'pc', 'pt', '%', 'px'];
+        const units = ['ch', 'cm', 'em', 'ex', 'in', 'mm', 'pc', 'pt', '%', 'px'];
 
         // Set from value
         from.value = localStorage.getItem(from.name) || '';
