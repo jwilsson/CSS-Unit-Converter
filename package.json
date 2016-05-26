@@ -21,5 +21,14 @@
     "stylelint": "^6.0.1",
     "stylelint-config-jwilsson": "jwilsson/stylelint-config",
     "yargs": "^4.2.0"
+  },
+  "babel": {
+    "presets": ["es2015"]
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-jwilsson/browser.json"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-jwilsson"
   }
 }
