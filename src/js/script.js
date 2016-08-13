@@ -159,12 +159,12 @@
 
     const run = () => {
         document.querySelector('.result').textContent = convert({
-            value: document.querySelector('.from').value,
+            base: document.querySelector('.base-size').value,
+            decimals: document.querySelector('.decimals').value,
+            dpi: document.querySelector('.dpi').value,
             from: document.querySelector('.from-unit').value,
             to: document.querySelector('.to-unit').value,
-            base: document.querySelector('.base-size').value,
-            dpi: document.querySelector('.dpi').value,
-            decimals: document.querySelector('.decimals').value,
+            value: document.querySelector('.from').value,
         });
     };
 
