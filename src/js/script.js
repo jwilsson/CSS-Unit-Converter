@@ -6,6 +6,7 @@
     };
 
     const convert = (options) => {
+        /* eslint-disable sort-keys */
         const units = `${ options.from }-${ options.to }`;
         const formulas = {
             'ch-cm': options.value * 0.21087588,
