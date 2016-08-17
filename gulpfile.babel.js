@@ -7,6 +7,7 @@ import fs from 'fs';
 import gulp from 'gulp';
 import gulpif from 'gulp-if';
 import handlebars from 'gulp-compile-handlebars';
+import minimist from 'minimist';
 import nested from 'postcss-nested'
 import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
@@ -14,9 +15,9 @@ import rev from 'gulp-rev';
 import stylelint from 'stylelint';
 import uglify from 'gulp-uglify';
 import watch from 'gulp-watch';
-import yargs from 'yargs';
 
-const IS_PRODUCTION = !!(yargs.argv.prod); // true if --prod flag is used
+const argv = minimist(process.argv.slice(2));
+const IS_PRODUCTION = !!(argv.prod); // true if --prod flag is used
 
 gulp.task('clean-css', () => {
     return del([
