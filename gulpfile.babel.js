@@ -12,7 +12,7 @@ import nested from 'postcss-nested'
 import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
 import rev from 'gulp-rev';
-import stylelint from 'stylelint';
+import stylelint from 'gulp-stylelint';
 import watch from 'gulp-watch';
 
 const argv = minimist(process.argv.slice(2));
@@ -45,11 +45,21 @@ gulp.task('scripts', ['clean-js', 'lint-js'], () => {
         .pipe(gulp.dest('./assets'));
 });
 
-gulp.task('styles', ['clean-css'], () => {
+gulp.task('lint-css', () => {
+    return gulp.src('./src/css/*.css')
+        .pipe(stylelint({
+            failAfterError: false,
+            reporters: [{
+                console: true,
+                formatter: 'string',
+            }],
+        }));
+});
+
+gulp.task('styles', ['clean-css', 'lint-css'], () => {
     return gulp.src('./src/css/*.css')
         .pipe(postcss([
             nested,
-            stylelint,
         ]))
         .on('error', function (error) {
             console.log(error);
