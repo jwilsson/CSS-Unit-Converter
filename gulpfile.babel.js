@@ -13,7 +13,6 @@ import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
 import rev from 'gulp-rev';
 import stylelint from 'stylelint';
-import uglify from 'gulp-uglify';
 import watch from 'gulp-watch';
 
 const argv = minimist(process.argv.slice(2));
@@ -39,9 +38,10 @@ gulp.task('lint-js', () => {
 
 gulp.task('scripts', ['clean-js', 'lint-js'], () => {
     return gulp.src('./src/js/**/*.js')
-        .pipe(babel())
+        .pipe(babel({
+            presets: IS_PRODUCTION ? ['babili'] : [], // Only minify when in production
+        }))
         .pipe(concat('script.min.js'))
-        .pipe(gulpif(IS_PRODUCTION, uglify())) // Only minify when in production
         .pipe(gulp.dest('./assets'));
 });
 
