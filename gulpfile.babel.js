@@ -1,5 +1,4 @@
 import babel from 'gulp-babel';
-import concat from 'gulp-concat';
 import cssnano from 'gulp-cssnano';
 import del from 'del';
 import eslint from 'gulp-eslint';
@@ -31,7 +30,7 @@ gulp.task('clean-js', () => {
 });
 
 gulp.task('lint-js', () => {
-    return gulp.src(['./src/js/**/*.js', '!./src/js/vendor/**/*.js'])
+    return gulp.src(['./src/js/**/*.js'])
         .pipe(eslint())
         .pipe(eslint.format());
 });
@@ -41,7 +40,9 @@ gulp.task('scripts', ['clean-js', 'lint-js'], () => {
         .pipe(babel({
             presets: IS_PRODUCTION ? ['babili'] : [], // Only minify when in production
         }))
-        .pipe(concat('script.min.js'))
+        .pipe(rename({
+            suffix: '.min',
+        }))
         .pipe(gulp.dest('./assets'));
 });
 
