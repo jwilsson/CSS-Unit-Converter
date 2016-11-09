@@ -3,6 +3,7 @@
   "devDependencies": {
     "babel-core": "^6.1.2",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-plugin-transform-exponentiation-operator": "^6.8.0",
     "babel-preset-babili": "~0.0.1",
     "del": "^2.0.1",
     "eslint-config-jwilsson": "jwilsson/eslint-config",
@@ -24,7 +25,8 @@
   "babel": {
     "comments": false,
     "plugins": [
-      "transform-es2015-modules-commonjs"
+      "transform-es2015-modules-commonjs",
+      "transform-exponentiation-operator"
     ]
   },
   "eslintConfig": {
