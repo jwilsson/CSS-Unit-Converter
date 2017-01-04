@@ -1,178 +1,180 @@
 ((window, document) => {
     'use strict';
 
-    const round = (number, decimals) => {
-        return Math.round(number * 10 ** decimals) / 10 ** decimals;
-    };
+    class UnitConverter {
+        constructor () {
+            const settings = document.querySelectorAll('.settings input');
+            const fragment = document.createDocumentFragment();
+            const selects = document.querySelectorAll('select');
+            const from = document.querySelector('.from');
+            const units = ['ch', 'cm', 'em', 'ex', 'in', 'mm', 'pc', 'pt', '%', 'px'];
 
-    const convert = (options) => {
-        /* eslint-disable sort-keys */
-        const units = `${ options.from }-${ options.to }`;
-        const formulas = {
-            'ch-cm': options.value * 0.21087588,
-            'ch-em': options.value * 0.5,
-            'ch-ex': options.value / 0.9,
-            'ch-in': options.value * 0.083022,
-            'ch-mm': options.value * 2.1087588,
-            'ch-pc': options.value * 0.5,
-            'ch-pt': options.value * 5.977584,
-            'ch-%': options.value * 50,
-            'ch-px': options.value * options.base * 0.5,
+            // Set from value
+            from.value = localStorage.getItem(from.name) || '';
 
-            'cm-ch': options.value / 0.21087588,
-            'cm-em': options.value / 0.42175176,
-            'cm-ex': options.value / 0.189788292,
-            'cm-in': options.value * 0.39,
-            'cm-mm': options.value * 10,
-            'cm-pc': options.value / 0.42175176,
-            'cm-pt': options.value * 28.3464566929,
-            'cm-%': options.value / options.base * 100 / 2.54 * options.dpi,
-            'cm-px': options.value / 2.54 * options.dpi,
+            // Add the units
+            units.forEach((unit) => {
+                const option = document.createElement('option');
 
-            'em-ch': options.value / 0.5,
-            'em-cm': options.value * 0.42175176,
-            'em-ex': options.value / 0.45,
-            'em-in': options.value * 0.166044,
-            'em-mm': options.value / 0.237106301584,
-            'em-pc': options.value,
-            'em-pt': options.value * 11.955168,
-            'em-%': options.value * 100,
-            'em-px': options.value * options.base,
+                option.value = unit;
+                option.textContent = unit;
 
-            'ex-ch': options.value * 0.9,
-            'ex-cm': options.value * 0.189788292,
-            'ex-em': options.value * 0.45,
-            'ex-in': options.value * 0.0747198,
-            'ex-mm': options.value * 1.89788292,
-            'ex-pc': options.value * 0.45,
-            'ex-pt': options.value * 5.3798256,
-            'ex-%': options.value * 45,
-            'ex-px': options.value * options.base * 0.45,
+                fragment.appendChild(option);
+            });
 
-            'in-ch': options.value / 0.083022,
-            'in-cm': options.value * 2.54,
-            'in-em': options.value / 0.166044,
-            'in-ex': options.value / 0.0747198,
-            'in-mm': options.value * 2.54 * 10,
-            'in-pc': options.value / 0.166044,
-            'in-pt': options.value / 0.014842519685,
-            'in-%': options.value / options.base * 100 * options.dpi,
-            'in-px': options.value * options.dpi,
+            // Select correct value
+            Array.from(selects).forEach((select) => {
+                const unit = localStorage.getItem(select.name);
+                let selected;
 
-            'mm-ch': options.value / 2.1087588,
-            'mm-cm': options.value / 10,
-            'mm-em': options.value * 0.237106301584,
-            'mm-ex': options.value / 1.89788292,
-            'mm-in': options.value * 0.39 / 10,
-            'mm-pc': options.value / 4.42175176,
-            'mm-pt': options.value / 0.352777777778,
-            'mm-%': options.value / options.base * 100 / 2.54 * options.dpi / 10,
-            'mm-px': options.value / 2.54 * options.dpi / 10,
+                if (unit) {
+                    selected = fragment.querySelector(`[value="${ unit }"]`);
+                    selected.defaultSelected = true;
+                }
 
-            'pc-ch': options.value / 0.5,
-            'pc-cm': options.value * 0.42175176,
-            'pc-em': options.value,
-            'pc-ex': options.value / 0.45,
-            'pc-in': options.value * 0.166044,
-            'pc-mm': options.value * 4.42175176,
-            'pc-pt': options.value / 0.0836458341698,
-            'pc-%': options.value * 100,
-            'pc-px': options.value * options.base,
+                select.appendChild(fragment.cloneNode(true));
 
-            'pt-ch': options.value / 5.977584,
-            'pt-cm': options.value / 28.3464566929,
-            'pt-em': options.value / 11.955168,
-            'pt-ex': options.value / 5.3798256,
-            'pt-in': options.value * 0.014842519685,
-            'pt-mm': options.value * 0.352777777778,
-            'pt-pc': options.value * 0.0836458341698,
-            'pt-%': options.value / (options.base - 4) * 100,
-            'pt-px': options.value * 96 / 72,
+                if (selected) {
+                    selected.defaultSelected = false;
+                }
+            });
 
-            '%-ch': options.value / 50,
-            '%-cm': options.value * options.base / 100 * 2.54 / options.dpi,
-            '%-em': options.value / 100,
-            '%-ex': options.value / 45,
-            '%-in': options.value * options.base / 100 / options.dpi,
-            '%-mm': options.value * options.base / 100 * 2.54 / options.dpi * 10,
-            '%-pc': options.value / 100,
-            '%-pt': options.value * (options.base - 4) / 100,
-            '%-px': options.value * options.base / 100,
+            // Add settings
+            Array.from(settings).forEach((setting) => {
+                setting.value = localStorage.getItem(setting.name) || setting.value;
+            });
+        }
 
-            'px-ch': options.value / options.base / 0.5,
-            'px-cm': options.value * 2.54 / options.dpi,
-            'px-em': options.value / options.base,
-            'px-ex': options.value / options.base / 0.45,
-            'px-in': options.value / options.dpi,
-            'px-mm': options.value * 2.54 / options.dpi * 10,
-            'px-pc': options.value / options.base,
-            'px-pt': options.value * 72 / 96,
-            'px-%': options.value / options.base * 100,
-        };
+        round (number, decimals) {
+            return Math.round(number * 10 ** decimals) / 10 ** decimals;
+        }
 
-        const result = formulas[units];
+        convert (options) {
+            /* eslint-disable sort-keys */
+            const units = `${ options.from }-${ options.to }`;
+            const formulas = {
+                'ch-cm': options.value * 0.21087588,
+                'ch-em': options.value * 0.5,
+                'ch-ex': options.value / 0.9,
+                'ch-in': options.value * 0.083022,
+                'ch-mm': options.value * 2.1087588,
+                'ch-pc': options.value * 0.5,
+                'ch-pt': options.value * 5.977584,
+                'ch-%': options.value * 50,
+                'ch-px': options.value * options.base * 0.5,
 
-        return (isNaN(result) ? 'N/A' : round(result, options.decimals) + options.to);
-    };
+                'cm-ch': options.value / 0.21087588,
+                'cm-em': options.value / 0.42175176,
+                'cm-ex': options.value / 0.189788292,
+                'cm-in': options.value * 0.39,
+                'cm-mm': options.value * 10,
+                'cm-pc': options.value / 0.42175176,
+                'cm-pt': options.value * 28.3464566929,
+                'cm-%': options.value / options.base * 100 / 2.54 * options.dpi,
+                'cm-px': options.value / 2.54 * options.dpi,
 
-    const setupForm = () => {
-        const settings = document.querySelectorAll('.settings input');
-        const fragment = document.createDocumentFragment();
-        const selects = document.querySelectorAll('select');
-        const from = document.querySelector('.from');
-        const units = ['ch', 'cm', 'em', 'ex', 'in', 'mm', 'pc', 'pt', '%', 'px'];
+                'em-ch': options.value / 0.5,
+                'em-cm': options.value * 0.42175176,
+                'em-ex': options.value / 0.45,
+                'em-in': options.value * 0.166044,
+                'em-mm': options.value / 0.237106301584,
+                'em-pc': options.value,
+                'em-pt': options.value * 11.955168,
+                'em-%': options.value * 100,
+                'em-px': options.value * options.base,
 
-        // Set from value
-        from.value = localStorage.getItem(from.name) || '';
+                'ex-ch': options.value * 0.9,
+                'ex-cm': options.value * 0.189788292,
+                'ex-em': options.value * 0.45,
+                'ex-in': options.value * 0.0747198,
+                'ex-mm': options.value * 1.89788292,
+                'ex-pc': options.value * 0.45,
+                'ex-pt': options.value * 5.3798256,
+                'ex-%': options.value * 45,
+                'ex-px': options.value * options.base * 0.45,
 
-        // Add the units
-        units.forEach((unit) => {
-            const option = document.createElement('option');
+                'in-ch': options.value / 0.083022,
+                'in-cm': options.value * 2.54,
+                'in-em': options.value / 0.166044,
+                'in-ex': options.value / 0.0747198,
+                'in-mm': options.value * 2.54 * 10,
+                'in-pc': options.value / 0.166044,
+                'in-pt': options.value / 0.014842519685,
+                'in-%': options.value / options.base * 100 * options.dpi,
+                'in-px': options.value * options.dpi,
 
-            option.value = unit;
-            option.textContent = unit;
+                'mm-ch': options.value / 2.1087588,
+                'mm-cm': options.value / 10,
+                'mm-em': options.value * 0.237106301584,
+                'mm-ex': options.value / 1.89788292,
+                'mm-in': options.value * 0.39 / 10,
+                'mm-pc': options.value / 4.42175176,
+                'mm-pt': options.value / 0.352777777778,
+                'mm-%': options.value / options.base * 100 / 2.54 * options.dpi / 10,
+                'mm-px': options.value / 2.54 * options.dpi / 10,
 
-            fragment.appendChild(option);
-        });
+                'pc-ch': options.value / 0.5,
+                'pc-cm': options.value * 0.42175176,
+                'pc-em': options.value,
+                'pc-ex': options.value / 0.45,
+                'pc-in': options.value * 0.166044,
+                'pc-mm': options.value * 4.42175176,
+                'pc-pt': options.value / 0.0836458341698,
+                'pc-%': options.value * 100,
+                'pc-px': options.value * options.base,
 
-        // Select correct value
-        Array.from(selects).forEach((select) => {
-            const unit = localStorage.getItem(select.name);
-            let selected;
+                'pt-ch': options.value / 5.977584,
+                'pt-cm': options.value / 28.3464566929,
+                'pt-em': options.value / 11.955168,
+                'pt-ex': options.value / 5.3798256,
+                'pt-in': options.value * 0.014842519685,
+                'pt-mm': options.value * 0.352777777778,
+                'pt-pc': options.value * 0.0836458341698,
+                'pt-%': options.value / (options.base - 4) * 100,
+                'pt-px': options.value * 96 / 72,
 
-            if (unit) {
-                selected = fragment.querySelector(`[value="${ unit }"]`);
-                selected.defaultSelected = true;
-            }
+                '%-ch': options.value / 50,
+                '%-cm': options.value * options.base / 100 * 2.54 / options.dpi,
+                '%-em': options.value / 100,
+                '%-ex': options.value / 45,
+                '%-in': options.value * options.base / 100 / options.dpi,
+                '%-mm': options.value * options.base / 100 * 2.54 / options.dpi * 10,
+                '%-pc': options.value / 100,
+                '%-pt': options.value * (options.base - 4) / 100,
+                '%-px': options.value * options.base / 100,
 
-            select.appendChild(fragment.cloneNode(true));
+                'px-ch': options.value / options.base / 0.5,
+                'px-cm': options.value * 2.54 / options.dpi,
+                'px-em': options.value / options.base,
+                'px-ex': options.value / options.base / 0.45,
+                'px-in': options.value / options.dpi,
+                'px-mm': options.value * 2.54 / options.dpi * 10,
+                'px-pc': options.value / options.base,
+                'px-pt': options.value * 72 / 96,
+                'px-%': options.value / options.base * 100,
+            };
 
-            if (selected) {
-                selected.defaultSelected = false;
-            }
-        });
+            const result = formulas[units];
 
-        // Add settings
-        Array.from(settings).forEach((setting) => {
-            setting.value = localStorage.getItem(setting.name) || setting.value;
-        });
-    };
+            return (isNaN(result) ? 'N/A' : this.round(result, options.decimals) + options.to);
+        }
 
-    const run = () => {
-        document.querySelector('.result').textContent = convert({
-            base: document.querySelector('.base-size').value,
-            decimals: document.querySelector('.decimals').value,
-            dpi: document.querySelector('.dpi').value,
-            from: document.querySelector('.from-unit').value,
-            to: document.querySelector('.to-unit').value,
-            value: document.querySelector('.from').value,
-        });
-    };
+        run () {
+            document.querySelector('.result').textContent = this.convert({
+                base: document.querySelector('.base-size').value,
+                decimals: document.querySelector('.decimals').value,
+                dpi: document.querySelector('.dpi').value,
+                from: document.querySelector('.from-unit').value,
+                to: document.querySelector('.to-unit').value,
+                value: document.querySelector('.from').value,
+            });
+        }
+    }
 
     window.addEventListener('DOMContentLoaded', () => {
         const elements = document.querySelectorAll('input, select');
-
-        setupForm();
+        const converter = new UnitConverter();
+        const run = converter.run.bind(converter);
 
         Array.from(elements).forEach((element) => {
             element.addEventListener('change', run);
