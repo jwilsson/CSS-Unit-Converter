@@ -159,7 +159,7 @@
             return (isNaN(result) ? 'N/A' : this.round(result, options.decimals) + options.to);
         }
 
-        run () {
+        onInput () {
             document.querySelector('.result').textContent = this.convert({
                 base: document.querySelector('.base-size').value,
                 decimals: document.querySelector('.decimals').value,
@@ -174,11 +174,10 @@
     window.addEventListener('DOMContentLoaded', () => {
         const elements = document.querySelectorAll('input, select');
         const converter = new UnitConverter();
-        const run = converter.run.bind(converter);
+        const onInput = converter.onInput.bind(converter);
 
         Array.from(elements).forEach((element) => {
-            element.addEventListener('change', run);
-            element.addEventListener('keyup', run);
+            element.addEventListener('input', onInput);
         });
 
         // Toogle display of setting forms
