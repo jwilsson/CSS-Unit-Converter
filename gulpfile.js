@@ -1,21 +1,21 @@
-import babel from 'gulp-babel';
-import cssnano from 'gulp-cssnano';
-import del from 'del';
-import eslint from 'gulp-eslint';
-import fs from 'fs';
-import gulp from 'gulp';
-import gulpif from 'gulp-if';
-import handlebars from 'gulp-compile-handlebars';
-import minimist from 'minimist';
-import nested from 'postcss-nested'
-import postcss from 'gulp-postcss';
-import rename from 'gulp-rename';
-import rev from 'gulp-rev';
-import stylelint from 'gulp-stylelint';
-import watch from 'gulp-watch';
+const babel = require('gulp-babel');
+const cssnano = require('gulp-cssnano');
+const del = require('del');
+const eslint = require('gulp-eslint');
+const fs = require('fs');
+const gulp = require('gulp');
+const gulpif = require('gulp-if');
+const handlebars = require('gulp-compile-handlebars');
+const minimist = require('minimist');
+const nested = require('postcss-nested');
+const postcss = require('gulp-postcss');
+const rename = require('gulp-rename');
+const rev = require('gulp-rev');
+const stylelint = require('gulp-stylelint');
+const watch = require('gulp-watch');
 
 const argv = minimist(process.argv.slice(2));
-const IS_PRODUCTION = !!(argv.prod); // true if --prod flag is used
+const isProduction = !!(argv.prod); // true if --prod flag is used
 
 gulp.task('clean-css', () => {
     return del([
@@ -38,7 +38,7 @@ gulp.task('lint-js', () => {
 gulp.task('scripts', ['clean-js', 'lint-js'], () => {
     return gulp.src('./src/js/**/*.js')
         .pipe(babel({
-            presets: IS_PRODUCTION ? ['babili'] : [], // Only minify when in production
+            presets: isProduction ? ['babili'] : [], // Only minify when in production
         }))
         .pipe(rename({
             suffix: '.min',
@@ -68,7 +68,7 @@ gulp.task('styles', ['clean-css', 'lint-css'], () => {
         .pipe(rename({
             suffix: '.min',
         }))
-        .pipe(gulpif(IS_PRODUCTION, cssnano())) // Only minify when in production
+        .pipe(gulpif(isProduction, cssnano())) // Only minify when in production
         .pipe(gulp.dest('./assets'));
 });
 
