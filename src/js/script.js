@@ -3,16 +3,16 @@
 
     class UnitConverter {
         constructor () {
-            const settings = document.querySelectorAll('.settings input');
             const fragment = document.createDocumentFragment();
-            const selects = document.querySelectorAll('select');
-            const from = document.querySelector('.from');
-            const units = ['ch', 'cm', 'em', 'ex', 'in', 'mm', 'pc', 'pt', '%', 'px'];
 
             // Set from value
+            const from = document.querySelector('.from');
+
             from.value = localStorage.getItem(from.name) || '';
 
-            // Add the units
+            // Build list of units
+            const units = ['ch', 'cm', 'em', 'ex', 'in', 'mm', 'pc', 'pt', '%', 'px'];
+
             units.forEach((unit) => {
                 const option = document.createElement('option');
 
@@ -22,7 +22,9 @@
                 fragment.appendChild(option);
             });
 
-            // Select correct value
+            // Select the correct value
+            const selects = document.querySelectorAll('select');
+
             Array.from(selects).forEach((select) => {
                 const unit = localStorage.getItem(select.name);
                 let selected;
@@ -39,7 +41,9 @@
                 }
             });
 
-            // Add settings
+            // Add the setting values
+            const settings = document.querySelectorAll('.settings input');
+
             Array.from(settings).forEach((setting) => {
                 setting.value = localStorage.getItem(setting.name) || setting.value;
             });
@@ -51,7 +55,6 @@
 
         convert (options) {
             /* eslint-disable sort-keys */
-            const units = `${ options.from }-${ options.to }`;
             const formulas = {
                 'ch-cm': options.value * 0.21087588,
                 'ch-em': options.value * 0.5,
@@ -154,6 +157,7 @@
                 'px-%': options.value / options.base * 100,
             };
 
+            const units = `${ options.from }-${ options.to }`;
             const result = formulas[units];
 
             return (isNaN(result) ? 'N/A' : this.round(result, options.decimals) + options.to);
@@ -180,7 +184,7 @@
             element.addEventListener('input', onInput);
         });
 
-        // Toogle display of setting forms
+        // Toogle display of setting inputs
         document.querySelector('.toggle').addEventListener('click', () => {
             document.querySelector('.settings').classList.toggle('show');
         });
