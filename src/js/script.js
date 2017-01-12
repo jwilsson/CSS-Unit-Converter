@@ -153,7 +153,7 @@
                 '%-pc': options.value / 100,
                 '%-pt': options.value * (options.base - 4) / 100,
                 '%-px': options.value * options.base / 100,
-                '%-q': options.value, // Todo
+                '%-q': options.value * options.base / 100 * 2.54 / options.dpi * 40,
 
                 'px-ch': options.value / options.base / 0.5,
                 'px-cm': options.value * 2.54 / options.dpi,
@@ -164,7 +164,7 @@
                 'px-pc': options.value / options.base,
                 'px-pt': options.value * 72 / 96,
                 'px-%': options.value / options.base * 100,
-                'px-q': options.value, // Todo
+                'px-q': options.value * 2.54 / options.dpi * 40,
 
                 'q-ch': options.value / 8.4350352,
                 'q-cm': options.value / 40,
@@ -174,8 +174,8 @@
                 'q-mm': options.value / 4,
                 'q-pc': options.value, // Todo
                 'q-pt': options.value, // Todo
-                'q-%': options.value, // Todo
-                'q-px': options.value, // Todo
+                'q-%': options.value / options.base * 100 / 2.54 * options.dpi / 40,
+                'q-px': options.value / 2.54 * options.dpi / 40,
             };
 
             const units = `${ options.from }-${ options.to }`;
