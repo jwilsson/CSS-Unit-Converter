@@ -142,7 +142,7 @@
                 'pt-pc': options.value * 0.0836458341698,
                 'pt-%': options.value / (options.base - 4) * 100,
                 'pt-px': options.value * 96 / 72,
-                'pt-q': options.value, // Todo
+                'pt-q': options.value * 1.4111111111,
 
                 '%-ch': options.value / 50,
                 '%-cm': options.value * options.base / 100 * 2.54 / options.dpi,
@@ -173,7 +173,7 @@
                 'q-in': options.value / 101.6,
                 'q-mm': options.value / 4,
                 'q-pc': options.value, // Todo
-                'q-pt': options.value, // Todo
+                'q-pt': options.value / 1.4111111111,
                 'q-%': options.value / options.base * 100 / 2.54 * options.dpi / 40,
                 'q-px': options.value / 2.54 * options.dpi / 40,
             };
