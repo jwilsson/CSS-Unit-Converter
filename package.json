@@ -19,7 +19,7 @@
     "gulp-watch": "^4.3.5",
     "minimist": "^1.2.0",
     "postcss-nested": "^1.0.0",
-    "stylelint-config-jwilsson": "jwilsson/stylelint-config"
+    "stylelint-config-jwilsson": "^1.0.0"
   },
   "babel": {
     "comments": false,
