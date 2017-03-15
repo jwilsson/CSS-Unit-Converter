@@ -5,7 +5,7 @@
     "babel-plugin-transform-exponentiation-operator": "^6.8.0",
     "babel-preset-babili": "~0.0.1",
     "del": "^2.0.1",
-    "eslint-config-jwilsson": "jwilsson/eslint-config",
+    "eslint-config-jwilsson": "^1.0.2",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.0",
     "gulp-compile-handlebars": "^0.6.1",
@@ -28,7 +28,7 @@
     ]
   },
   "eslintConfig": {
-    "extends": "eslint-config-jwilsson/browser.json"
+    "extends": "eslint-config-jwilsson/browser"
   },
   "stylelint": {
     "extends": "stylelint-config-jwilsson"
