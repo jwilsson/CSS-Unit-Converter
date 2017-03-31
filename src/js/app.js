@@ -1,16 +1,66 @@
 import UnitConverter from './unit-converter';
 import '../css/style.css';
 
+const converter = new UnitConverter();
+const onInput = () => {
+    const result = converter.convert({
+        base: document.querySelector('.base-size').value,
+        decimals: document.querySelector('.decimals').value,
+        dpi: document.querySelector('.dpi').value,
+        from: document.querySelector('.from-unit').value,
+        to: document.querySelector('.to-unit').value,
+        value: document.querySelector('.from').value,
+    });
+
+    document.querySelector('.result').textContent = result || 'N/A';
+};
+
 window.addEventListener('DOMContentLoaded', () => {
+    const fragment = document.createDocumentFragment();
+    const from = document.querySelector('.from');
+
+    from.value = localStorage.getItem(from.name) || '';
+
+    converter.getUnits().forEach((unit) => {
+        const option = document.createElement('option');
+
+        option.value = unit;
+        option.textContent = unit;
+
+        fragment.appendChild(option);
+    });
+
+    // Select the correct value
+    const selects = document.querySelectorAll('select');
+
+    Array.from(selects).forEach((select) => {
+        const unit = localStorage.getItem(select.name);
+        let selected;
+
+        if (unit) {
+            selected = fragment.querySelector(`[value="${ unit }"]`);
+            selected.defaultSelected = true;
+        }
+
+        select.appendChild(fragment.cloneNode(true));
+
+        if (selected) {
+            selected.defaultSelected = false;
+        }
+    });
+
+    const settings = document.querySelectorAll('.settings input');
+
+    Array.from(settings).forEach((setting) => {
+        setting.value = localStorage.getItem(setting.name) || setting.value;
+    });
+
     const elements = document.querySelectorAll('input, select');
-    const converter = new UnitConverter();
-    const onInput = converter.onInput.bind(converter);
 
     Array.from(elements).forEach((element) => {
         element.addEventListener('input', onInput);
     });
 
-    // Toogle display of setting inputs
     document.querySelector('.toggle').addEventListener('click', () => {
         document.querySelector('.settings').classList.toggle('show');
     });

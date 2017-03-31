@@ -1,55 +1,4 @@
 export default class UnitConverter {
-    constructor () {
-        const fragment = document.createDocumentFragment();
-
-        // Set from value
-        const from = document.querySelector('.from');
-
-        from.value = localStorage.getItem(from.name) || '';
-
-        // Build list of units
-        const units = ['ch', 'cm', 'em', 'ex', 'in', 'mm', 'pc', 'pt', '%', 'px'];
-
-        units.forEach((unit) => {
-            const option = document.createElement('option');
-
-            option.value = unit;
-            option.textContent = unit;
-
-            fragment.appendChild(option);
-        });
-
-        // Select the correct value
-        const selects = document.querySelectorAll('select');
-
-        Array.from(selects).forEach((select) => {
-            const unit = localStorage.getItem(select.name);
-            let selected;
-
-            if (unit) {
-                selected = fragment.querySelector(`[value="${ unit }"]`);
-                selected.defaultSelected = true;
-            }
-
-            select.appendChild(fragment.cloneNode(true));
-
-            if (selected) {
-                selected.defaultSelected = false;
-            }
-        });
-
-        // Add the setting values
-        const settings = document.querySelectorAll('.settings input');
-
-        Array.from(settings).forEach((setting) => {
-            setting.value = localStorage.getItem(setting.name) || setting.value;
-        });
-    }
-
-    round (number, decimals) {
-        return Math.round(number * 10 ** decimals) / 10 ** decimals;
-    }
-
     convert (options) {
         /* eslint-disable sort-keys */
         const formulas = {
@@ -153,21 +102,23 @@ export default class UnitConverter {
             'px-pt': options.value * 72 / 96,
             'px-%': options.value / options.base * 100,
         };
+        /* eslint-enable sort-keys */
 
         const units = `${ options.from }-${ options.to }`;
         const result = formulas[units];
 
-        return (isNaN(result) ? 'N/A' : this.round(result, options.decimals) + options.to);
+        if (isNaN(result)) {
+            return false;
+        }
+
+        return this.round(result, options.decimals) + options.to;
     }
 
-    onInput () {
-        document.querySelector('.result').textContent = this.convert({
-            base: document.querySelector('.base-size').value,
-            decimals: document.querySelector('.decimals').value,
-            dpi: document.querySelector('.dpi').value,
-            from: document.querySelector('.from-unit').value,
-            to: document.querySelector('.to-unit').value,
-            value: document.querySelector('.from').value,
-        });
+    getUnits () {
+        return ['ch', 'cm', 'em', 'ex', 'in', 'mm', 'pc', 'pt', '%', 'px'];
+    }
+
+    round (number, decimals) {
+        return Math.round(number * 10 ** decimals) / 10 ** decimals;
     }
 }
