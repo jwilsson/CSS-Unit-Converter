@@ -4,7 +4,7 @@ Use the CSS Unit Converter to convert values between almost every CSS [&lt;lengt
 Check it out in action at https://jwilsson.com/unit-converter/.
 
 ## Building
-Make sure [Node.js](https://nodejs.org/) and [gulp](http://gulpjs.com/) is installed.
+Make sure [Node.js](https://nodejs.org/) is installed.
 
 Install all dependencies
 
@@ -15,17 +15,17 @@ npm install
 Build everything
 
 ```bash
-gulp
+npm run build
 ```
 
 Watch everything (and rebuild on changes)
 
 ```bash
-gulp watch
+npm run watch
 ```
 
 Build everything for production (minification etc.)
 
 ```bash
-gulp --prod
+npm run build:prod
 ```

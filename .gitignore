@@ -2,3 +2,4 @@
 assets
 index.html
 node_modules
+!src/index.html
