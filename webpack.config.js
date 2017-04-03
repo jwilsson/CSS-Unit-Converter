@@ -26,7 +26,7 @@ const config = {
                             options: {
                                 plugins: [
                                     require('stylelint'),
-                                    require('postcss-nested'),
+                                    require('postcss-nesting'),
                                 ],
                             },
                         },
