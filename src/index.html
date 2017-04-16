@@ -9,78 +9,54 @@
 </head>
 
 <body>
-
     <div class="wrapper">
-
         <header>
-
             <h1>CSS Unit Converter</h1>
-
         </header>
 
         <section class="content">
-
             <input type="number" name="from" class="from" min="1" placeholder="From">
 
             <div class="unit-wrapper">
-
                 <div class="unit">
-
                     <select name="from-unit" class="from-unit"></select>
-
                 </div>
 
                 <span class="unit-sep">&raquo;</span>
 
                 <div class="unit">
-
                     <select name="to-unit" class="to-unit"></select>
-
                 </div>
-
             </div>
 
             <p>
-                <button type="button" class="toggle">Settings</button>
+                <button type="button" class="toggle">Settings &gt;&gt;</button>
             </p>
 
             <section class="settings">
-
                 <div class="setting">
-
                     <label for="base-size">Base size (px):</label>
                     <input type="number" name="base-size" id="base-size" class="base-size" min="1" value="16">
-
                 </div>
 
                 <div class="setting">
-
                     <label for="decimals">Decimals:</label>
                     <input type="number" name="decimals" id="decimals" class="decimals" min="0" value="2">
-
                 </div>
 
                 <div class="setting">
-
                     <label for="dpi">Dots Per Inch:</label>
                     <input type="number" name="dpi" id="dpi" class="dpi" min="1" value="72">
-
                 </div>
-
             </section>
 
             <h2>Result:</h2>
 
             <span class="result"></span>
-
         </section>
 
         <footer>
-
             Another thing by <a href="https://twitter.com/jwilsson">Jonathan Wilsson</a>.
-
         </footer>
-
     </div>
-
 </body>
