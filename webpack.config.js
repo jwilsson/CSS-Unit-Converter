@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BabiliPlugin = require('babili-webpack-plugin');
+const path = require('path');
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -36,18 +37,29 @@ const config = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'eslint-loader',
-            },
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            plugins: ['syntax-dynamic-import'],
+                        },
+                    },
+                    'eslint-loader',
+                ],
+            }
         ],
     },
     output: {
-        filename: 'assets/app-[hash].js',
+        chunkFilename: '[hash].js',
+        filename: 'app-[hash].js',
+        path: path.resolve(__dirname, 'assets'),
+        publicPath: '/assets/',
     },
     plugins: [
         new CleanWebpackPlugin(['assets'], {
             watch: true,
         }),
-        new ExtractTextPlugin('assets/style-[contenthash].css'),
+        new ExtractTextPlugin('style-[contenthash].css'),
     ],
 };
 
@@ -74,6 +86,7 @@ if (isProduction) {
 
 Array.prototype.push.apply(config.plugins, [
     new HtmlWebpackPlugin({
+        filename: path.resolve(__dirname, 'index.html'),
         minify,
         template: './src/index.html',
     }),

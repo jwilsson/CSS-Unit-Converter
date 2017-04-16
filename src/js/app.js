@@ -1,7 +1,7 @@
-import UnitConverter from './unit-converter';
 import '../css/style.css';
 
-const converter = new UnitConverter();
+let converter;
+
 const onInput = () => {
     const result = converter.convert({
         base: document.querySelector('.base-size').value,
@@ -15,7 +15,7 @@ const onInput = () => {
     document.querySelector('.result').textContent = result || 'N/A';
 };
 
-window.addEventListener('DOMContentLoaded', () => {
+const init = () => {
     const fragment = document.createDocumentFragment();
     const from = document.querySelector('.from');
 
@@ -71,4 +71,13 @@ window.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem(element.name, element.value);
         });
     }, 30000);
+};
+
+window.addEventListener('DOMContentLoaded', async () => {
+    let UnitConverter = await import('./unit-converter');
+
+    UnitConverter = UnitConverter.default;
+    converter = new UnitConverter();
+
+    init();
 });
