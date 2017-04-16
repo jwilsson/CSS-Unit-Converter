@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="description" content="CSS Unit Converter is a little tool which helps you convert values between almost every CSS &lt;length&gt; unit.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>CSS Unit Converter</title>
 </head>
@@ -21,11 +22,23 @@
 
             <input type="number" name="from" class="from" min="1" placeholder="From">
 
-            <select name="from-unit" class="from-unit"></select>
+            <div class="unit-wrapper">
 
-            <span>&raquo;</span>
+                <div class="unit">
 
-            <select name="to-unit" class="to-unit"></select>
+                    <select name="from-unit" class="from-unit"></select>
+
+                </div>
+
+                <span class="unit-sep">&raquo;</span>
+
+                <div class="unit">
+
+                    <select name="to-unit" class="to-unit"></select>
+
+                </div>
+
+            </div>
 
             <p>
                 <button type="button" class="toggle">Settings</button>
@@ -33,23 +46,23 @@
 
             <section class="settings">
 
-                <div class="box">
+                <div class="setting">
 
                     <label for="base-size">Base size (px):</label>
                     <input type="number" name="base-size" id="base-size" class="base-size" min="1" value="16">
 
                 </div>
 
-                <div class="box">
+                <div class="setting">
 
-                    <label for="decimals">Decimal places:</label>
+                    <label for="decimals">Decimals:</label>
                     <input type="number" name="decimals" id="decimals" class="decimals" min="0" value="2">
 
                 </div>
 
-                <div class="box">
+                <div class="setting">
 
-                    <label for="dpi">Dots per inch (DPI):</label>
+                    <label for="dpi">Dots Per Inch:</label>
                     <input type="number" name="dpi" id="dpi" class="dpi" min="1" value="72">
 
                 </div>
