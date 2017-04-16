@@ -53,7 +53,7 @@ const config = {
         chunkFilename: '[hash].js',
         filename: 'app-[hash].js',
         path: path.resolve(__dirname, 'assets'),
-        publicPath: '/assets/',
+        publicPath: 'assets/',
     },
     plugins: [
         new CleanWebpackPlugin(['assets'], {
