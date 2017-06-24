@@ -18,7 +18,7 @@
     "postcss-nesting": "^4.0.1",
     "stylelint": "^7.9.0",
     "stylelint-config-jwilsson": "^1.0.0",
-    "webpack": "^2.3.2",
+    "webpack": "^3.0.0",
     "webpack-dev-server": "^2.4.2"
   },
   "scripts": {
