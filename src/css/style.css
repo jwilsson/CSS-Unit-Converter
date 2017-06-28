@@ -1,10 +1,10 @@
-/* stylelint-disable selector-no-universal */
+/* stylelint-disable selector-max-universal */
 *,
 *::before,
 *::after {
     box-sizing: inherit;
 }
-/* stylelint-enable selector-no-universal */
+/* stylelint-enable selector-max-universal */
 
 html,
 body {
