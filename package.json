@@ -7,8 +7,8 @@
     "babili-webpack-plugin": "^0.1.1",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.0",
-    "eslint": "^3.18.0",
-    "eslint-config-jwilsson": "^1.0.2",
+    "eslint": "^4.0.0",
+    "eslint-config-jwilsson": "^2.0.0",
     "eslint-loader": "^1.7.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "handlebars-loader": "^1.4.0",
@@ -29,8 +29,7 @@
     "watch:prod": "NODE_ENV=production webpack --progress --colors -w"
   },
   "eslintConfig": {
-    "extends": "eslint-config-jwilsson/browser",
-    "parser": "babel-eslint"
+    "extends": "eslint-config-jwilsson/browser"
   },
   "stylelint": {
     "extends": "stylelint-config-jwilsson"
