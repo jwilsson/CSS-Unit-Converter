@@ -38,12 +38,7 @@ const config = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            plugins: ['syntax-dynamic-import'],
-                        },
-                    },
+                    'babel-loader',
                     'eslint-loader',
                 ],
             }
