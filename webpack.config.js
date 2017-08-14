@@ -1,9 +1,11 @@
 'use strict';
 
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BabiliPlugin = require('babili-webpack-plugin');
+const webpack = require('webpack');
 const path = require('path');
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -80,10 +82,12 @@ if (isProduction) {
 
 Array.prototype.push.apply(config.plugins, [
     new HtmlWebpackPlugin({
+        alwaysWriteToDisk: true,
         filename: path.resolve(__dirname, 'index.html'),
         minify,
         template: './src/index.html',
     }),
+    new HtmlWebpackHarddiskPlugin(),
 ]);
 
 module.exports = config;

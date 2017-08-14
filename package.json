@@ -10,6 +10,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "handlebars-loader": "^1.4.0",
     "html-loader": "^0.5.0",
+    "html-webpack-harddisk-plugin": "^0.1.0",
     "html-webpack-plugin": "^2.28.0",
     "postcss-loader": "^2.0.5",
     "postcss-nesting": "^4.0.1",
@@ -21,7 +22,7 @@
   "scripts": {
     "build": "webpack --progress --colors",
     "build:prod": "NODE_ENV=production webpack --progress --colors",
-    "server": "webpack-dev-server --inline --progress --colors",
+    "server": "webpack-dev-server --inline --progress --colors --hot",
     "watch": "webpack --progress --colors -w",
     "watch:prod": "NODE_ENV=production webpack --progress --colors -w"
   },
