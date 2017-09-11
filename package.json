@@ -22,7 +22,7 @@
   "scripts": {
     "build": "webpack --progress --colors",
     "build:prod": "NODE_ENV=production webpack --progress --colors",
-    "server": "webpack-dev-server --inline --progress --colors --hot",
+    "start": "webpack-dev-server --inline --progress --colors --hot",
     "watch": "webpack --progress --colors -w",
     "watch:prod": "NODE_ENV=production webpack --progress --colors -w"
   },
