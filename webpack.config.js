@@ -62,9 +62,9 @@ const config = {
 let minify = false;
 
 if (isProduction) {
-    Array.prototype.push.apply(config.plugins, [
+    config.plugins.push(
         new BabiliPlugin(),
-    ]);
+    );
 
     minify = {
         collapseBooleanAttributes: true,
@@ -80,7 +80,7 @@ if (isProduction) {
     };
 }
 
-Array.prototype.push.apply(config.plugins, [
+config.plugins.push(
     new HtmlWebpackPlugin({
         alwaysWriteToDisk: true,
         filename: path.resolve(__dirname, 'index.html'),
@@ -88,6 +88,6 @@ Array.prototype.push.apply(config.plugins, [
         template: './src/index.html',
     }),
     new HtmlWebpackHarddiskPlugin(),
-]);
+);
 
 module.exports = config;
