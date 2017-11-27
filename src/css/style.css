@@ -19,24 +19,6 @@ body {
     margin: 0;
 }
 
-header {
-    background: linear-gradient(to bottom, #dddddd 0%, #d8d8d8 33%, #cecece 67%, #c6c6c6 100%);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-footer {
-    bottom: 10px;
-    color: #999999;
-    font-size: 0.9rem;
-    position: absolute;
-    right: 10px;
-
-    a:hover {
-        color: #999999;
-    }
-}
-
 h1 {
     color: #111111;
     font-size: 2rem;
@@ -118,6 +100,12 @@ a {
     width: 90%;
 }
 
+.header {
+    background: linear-gradient(to bottom, #dddddd 0%, #d8d8d8 33%, #cecece 67%, #c6c6c6 100%);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
 .content {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
@@ -158,4 +146,16 @@ a {
 
 .unit-sep {
     flex: 0 0 15px;
+}
+
+.footer {
+    bottom: 10px;
+    color: #999999;
+    font-size: 0.9rem;
+    position: absolute;
+    right: 10px;
+}
+
+.footer-link:hover {
+    color: #999999;
 }
