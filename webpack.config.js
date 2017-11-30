@@ -11,7 +11,10 @@ const path = require('path');
 const isProduction = process.env.NODE_ENV === 'production'
 
 const config = {
-    entry: './src/js/app.js',
+    entry: [
+        './src/js/app.js',
+        './src/css/style.css',
+    ],
     module: {
         rules: [
             {
@@ -46,7 +49,6 @@ const config = {
         ],
     },
     output: {
-        chunkFilename: '[hash].js',
         filename: 'app-[hash].js',
         path: path.resolve(__dirname, 'assets'),
         publicPath: 'assets/',

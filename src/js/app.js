@@ -1,5 +1,4 @@
 import UnitConverter from './unit-converter';
-import '../css/style.css';
 
 const converter = new UnitConverter();
 
