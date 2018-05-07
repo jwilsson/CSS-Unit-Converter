@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', () => {
         let selected;
 
         if (unit) {
-            selected = fragment.querySelector(`[value="${ unit }"]`);
+            selected = fragment.querySelector(`[value='${unit}']`);
             selected.defaultSelected = true;
         }
 

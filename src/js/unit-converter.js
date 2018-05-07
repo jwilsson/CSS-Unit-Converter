@@ -104,7 +104,7 @@ export default class UnitConverter {
         };
         /* eslint-enable sort-keys */
 
-        const units = `${ options.from }-${ options.to }`;
+        const units = `${options.from}-${options.to}`;
         const result = formulas[units];
 
         if (isNaN(result)) {
