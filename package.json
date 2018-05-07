@@ -21,11 +21,11 @@
     "webpack-dev-server": "^3.1.1"
   },
   "scripts": {
-    "build": "webpack --progress --colors",
-    "build:prod": "NODE_ENV=production webpack --progress --colors",
-    "start": "webpack-dev-server --inline --progress --colors --hot",
-    "watch": "webpack --progress --colors -w",
-    "watch:prod": "NODE_ENV=production webpack --progress --colors -w"
+    "build": "webpack --progress --colors --mode development",
+    "build:prod": "NODE_ENV=production webpack --progress --colors --mode production",
+    "start": "webpack-dev-server --inline --progress --colors --hot --mode development",
+    "watch": "webpack --progress --colors -w --mode production",
+    "watch:prod": "NODE_ENV=production webpack --progress --colors -w --mode production"
   },
   "eslintConfig": {
     "extends": "eslint-config-jwilsson/browser"

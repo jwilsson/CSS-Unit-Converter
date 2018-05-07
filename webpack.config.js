@@ -10,7 +10,7 @@ const path = require('path');
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-const config = {
+let config = {
     entry: [
         './src/js/app.js',
         './src/css/style.css',
@@ -56,9 +56,13 @@ const config = {
 let minify = false;
 
 if (isProduction) {
-    config.plugins.push(
-        new BabiliPlugin(),
-    );
+    config = {
+        ...config,
+        plugins: [
+            ...config.plugins,
+            new BabiliPlugin(),
+        ],
+    };
 
     minify = {
         collapseBooleanAttributes: true,
@@ -74,14 +78,18 @@ if (isProduction) {
     };
 }
 
-config.plugins.push(
-    new HtmlWebpackPlugin({
-        alwaysWriteToDisk: true,
-        filename: path.resolve(__dirname, 'index.html'),
-        minify,
-        template: './src/index.html',
-    }),
-    new HtmlWebpackHarddiskPlugin(),
-);
+config = {
+    ...config,
+    plugins: [
+        ...config.plugins,
+        new HtmlWebpackPlugin({
+            alwaysWriteToDisk: true,
+            filename: path.resolve(__dirname, 'index.html'),
+            minify,
+            template: './src/index.html',
+        }),
+        new HtmlWebpackHarddiskPlugin(),
+    ],
+};
 
 module.exports = config;
