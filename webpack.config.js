@@ -1,7 +1,7 @@
 'use strict';
 
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BabiliPlugin = require('babili-webpack-plugin');
@@ -19,25 +19,15 @@ const config = {
         rules: [
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                minimize: isProduction,
-                            },
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            minimize: isProduction,
                         },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                plugins: [
-                                    require('stylelint'),
-                                    require('postcss-nesting'),
-                                ],
-                            },
-                        },
-                    ],
-                }),
+                    },
+                ],
             },
             {
                 test: /\.js$/,
@@ -57,7 +47,9 @@ const config = {
         new CleanWebpackPlugin(['assets'], {
             watch: true,
         }),
-        new ExtractTextPlugin('style-[contenthash].css'),
+        new MiniCssExtractPlugin({
+            filename: '[name].[hash].css',
+        }),
     ],
 };
 
