@@ -27,6 +27,15 @@ let config = {
                             minimize: isProduction,
                         },
                     },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [
+                                require('stylelint'),
+                                require('postcss-nesting'),
+                            ],
+                        },
+                    },
                 ],
             },
             {
