@@ -1,5 +1,4 @@
+.cache
 *.DS_Store
-assets
-index.html
+dist
 node_modules
-!src/index.html

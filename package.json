@@ -1,37 +1,38 @@
 {
   "name": "css-unit-converter",
   "devDependencies": {
-    "babili-webpack-plugin": "^0.1.1",
-    "clean-webpack-plugin": "^0.1.19",
-    "css-loader": "^1.0.0",
     "eslint": "^5.0.0",
     "eslint-config-jwilsson": "^3.0.1",
-    "eslint-loader": "^2.0.0",
-    "handlebars-loader": "^1.4.0",
-    "html-loader": "^0.5.0",
-    "html-webpack-harddisk-plugin": "^0.2.0",
-    "html-webpack-plugin": "^3.0.6",
-    "mini-css-extract-plugin": "^0.4.0",
-    "postcss-loader": "^2.0.5",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
+    "parcel-bundler": "^1.9.7",
+    "parcel-plugin-clean-dist": "0.0.6",
     "postcss-nesting": "^6.0.0",
     "stylelint": "^9.1.1",
-    "stylelint-config-jwilsson": "^3.0.0",
-    "webpack": "^4.1.1",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.1"
+    "stylelint-config-jwilsson": "^3.0.0"
   },
   "scripts": {
-    "build": "webpack --progress --colors --mode development",
-    "build:prod": "NODE_ENV=production webpack --progress --colors --mode production",
-    "start": "webpack-dev-server --inline --progress --colors --hot --mode development",
-    "watch": "webpack --progress --colors -w --mode production",
-    "watch:prod": "NODE_ENV=production webpack --progress --colors -w --mode production"
+    "build": "parcel build src/index.html",
+    "precommit": "lint-staged",
+    "start": "parcel serve src/index.html"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint src/ --fix",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint src/ --fix",
+      "git add"
+    ]
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-nesting": {}
+    }
   },
   "eslintConfig": {
-    "extends": "eslint-config-jwilsson/browser",
-    "rules": {
-      "no-debugger": "off"
-    }
+    "extends": "eslint-config-jwilsson/browser"
   },
   "stylelint": {
     "extends": "stylelint-config-jwilsson"
