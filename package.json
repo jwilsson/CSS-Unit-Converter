@@ -12,7 +12,7 @@
     "stylelint-config-jwilsson": "^3.0.0"
   },
   "scripts": {
-    "build": "parcel build src/index.html",
+    "build": "parcel build src/index.html --public-url ./",
     "precommit": "lint-staged",
     "start": "parcel serve src/index.html"
   },
