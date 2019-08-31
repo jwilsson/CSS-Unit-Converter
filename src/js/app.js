@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // Select the correct value
     const selects = document.querySelectorAll('select');
 
-    Array.from(selects).forEach((select) => {
+    selects.forEach((select) => {
         const unit = localStorage.getItem(select.name);
         let selected;
 
@@ -51,13 +51,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const settings = document.querySelectorAll('.settings input');
 
-    Array.from(settings).forEach((setting) => {
+    settings.forEach((setting) => {
         setting.value = localStorage.getItem(setting.name) || setting.value;
     });
 
-    const elements = document.querySelectorAll('input, select');
+    const inputs = document.querySelectorAll('input, select');
 
-    Array.from(elements).forEach((element) => {
+    inputs.forEach((element) => {
         element.addEventListener('input', onInput);
     });
 
@@ -67,7 +67,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Save all values once every 30 seconds
     setInterval(() => {
-        Array.from(elements).forEach((element) => {
+        inputs.forEach((element) => {
             localStorage.setItem(element.name, element.value);
         });
     }, 30000);

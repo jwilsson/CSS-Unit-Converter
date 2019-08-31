@@ -1,4 +1,4 @@
-export default class UnitConverter {
+class UnitConverter {
     convert (options) {
         /* eslint-disable sort-keys */
         const formulas = {
@@ -122,3 +122,5 @@ export default class UnitConverter {
         return Math.round(number * 10 ** decimals) / 10 ** decimals;
     }
 }
+
+export default UnitConverter;
