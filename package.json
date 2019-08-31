@@ -1,19 +1,18 @@
 {
   "name": "css-unit-converter",
   "devDependencies": {
-    "eslint": "^5.3.0",
-    "eslint-config-jwilsson": "^3.2.0",
-    "husky": "^1.3.1",
-    "lint-staged": "^8.1.0",
+    "eslint": "^6.3.0",
+    "eslint-config-jwilsson": "^4.1.0",
+    "husky": "^3.0.4",
+    "lint-staged": "^9.2.5",
     "parcel-bundler": "^1.11.0",
     "parcel-plugin-clean-dist": "0.0.6",
     "postcss-nesting": "^7.0.0",
-    "stylelint": "^9.4.0",
+    "stylelint": "^10.1.0",
     "stylelint-config-jwilsson": "^3.0.0"
   },
   "scripts": {
     "build": "parcel build src/index.html --public-url ./",
-    "precommit": "lint-staged",
     "start": "parcel serve src/index.html"
   },
   "lint-staged": {
@@ -36,5 +35,10 @@
   },
   "stylelint": {
     "extends": "stylelint-config-jwilsson"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
